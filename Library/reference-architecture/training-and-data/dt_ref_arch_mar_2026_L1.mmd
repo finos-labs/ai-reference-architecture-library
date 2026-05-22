@@ -1,0 +1,86 @@
+C4Context
+  title AI Data and Training Reference Architecture
+
+  %% Users
+  Person(dataeng, "Data Engineer", "A data engineer interacting with the catalog")
+  Person(businessUser, "Business User", "A business user interacting with Data Presentation and BI Tools")
+  Person(datasci, "Data Scientist", "A data scientist interacting with the Model Registry")
+
+  Enterprise_Boundary(b0, "Enterprise Domain") {
+    System_Boundary(b1, "Data Domain") {  
+      System_Boundary(dataPlatform, "Data Platform") {
+        System(dataInterface, "Data Platform Orchestrator")
+
+        System(dataCatalog, "Data Catalog Layer")
+        
+        System(dataPresentation, "Data Presentation")
+
+        System(dataLanding, "Data Landing Layer")
+
+        System(dataManagement, "Data Management Layer")
+      }
+
+      System_Boundary(trainingLayer, "Training Platform") {
+        System(trainingInterface, "Training Platform Orchestrator")
+
+        System(modelRegistry, "Model Registry Layer")
+
+        System(aiProcessingLayer, "AI Processing Layer")
+      }
+
+      System(observabilityLayer, "Lineage and Observability")
+      System(attestationLayer, "Attestation and Lineage Layer")
+      System(streamingProcesses, "Streaming Processes", "Processes")
+    }
+    System(otherDomainDataSources, "Other Domain's Data Sources", "Internal Datasets")
+  }
+
+  %% External Systems
+  System_Ext(thirdPartyModels, "3rd Party Models", "External Models")
+  System_Ext(thirdPartyDataSources, "3rd Party Data Sources", "External Datasets")
+
+  %% Relationships
+
+  %% data engineer
+  BiRel(dataeng, dataCatalog, "Interacts with")
+  BiRel(dataeng, dataInterface, "Interacts with")
+  %% business user
+  BiRel(businessUser, dataPresentation, "Interacts with")
+  
+  %% data engineer
+  BiRel(dataeng, modelRegistry, "Interacts with")
+  BiRel(dataeng, trainingInterface, "Interacts with")
+
+  %% observability
+  Rel(dataCatalog, observabilityLayer, "sends logs, metrics, events and traces")
+  Rel(dataInterface, observabilityLayer, "sends logs, metrics, events and traces")
+  Rel(modelRegistry, observabilityLayer, "sends logs, metrics, events and traces")
+  Rel(trainingInterface, observabilityLayer, "sends logs, metrics, events and traces")
+  Rel(aiProcessingLayer, observabilityLayer, "sends logs, metrics, events and traces")
+  Rel(dataLanding, observabilityLayer, "sends logs, metrics, events and traces")
+  Rel(dataManagement, observabilityLayer, "sends logs, metrics, events and traces")
+
+  %% attestations
+  Rel(aiProcessingLayer, attestationLayer, "sends attestations")
+  Rel(dataLanding, observabilityLayer,  "sends attestations")
+  Rel(dataManagement, observabilityLayer,  "sends attestations")
+
+  %% data catalog
+  Rel(dataCatalog, dataLanding, "extracts metadata")
+  Rel(dataCatalog, dataManagement, "extracts metadata")
+
+  %% data orchestrator
+  Rel(dataInterface, dataLanding, "triggers pipelines")
+  Rel(dataInterface, dataManagement, "triggers pipelines")
+
+  %% data transitions
+  Rel(otherDomainDataSources, dataLanding, "data promotion")
+  Rel(dataLanding, dataManagement, "data validation")
+
+  %% ai orchestrator
+  Rel(trainingInterface, aiProcessingLayer, "triggers pipelines")
+
+  %% registry
+  Rel(aiProcessingLayer, modelRegistry, "feeds")
+  Rel(aiProcessingLayer, modelRegistry, "validates and evaluates models")
+

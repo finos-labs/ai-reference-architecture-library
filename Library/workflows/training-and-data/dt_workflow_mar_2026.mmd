@@ -1,0 +1,96 @@
+flowchart TD
+    %% External Entities
+    Sources[(3rd Party & Internal Data)]
+    ExtModels[(3rd Party Models)]
+
+    %% Data Platform
+    subgraph DataPlatform [1. Data Engineering]
+        direction TB
+        Ingest[Data Ingestion]
+        Raw[(Raw Datasets)]
+        subgraph Validate [Data Validation]
+            direction TB
+            Quality[Data Quality & Bias]
+            Compliance[Data Compliance]
+            Provenance[Data Provenance]
+            UsageReq[Usage requirements]
+        end
+        subgraph Transform [Data Transformation]
+            direction TB
+            Clean[Clean]
+            Normalized[Normalized]
+            Transformd[Transform]
+            Label[Label]
+        end
+        VettedData[(Vetted / Processed Data)]
+        FStore[(Features)]
+    end
+
+    %% Training Platform
+    subgraph TrainingPlatform [2. Data Science]
+        direction TB
+        ModelIngest[Model Ingestion]
+        subgraph Train [Model Training]
+            direction TB
+            Hyperparameters[Hyperparameter selection]
+            Training[Model Training]
+            Validation[Metrics Validation]
+        end
+        UnvettedModel[(Unvetted Models)]
+        subgraph Eval [Model Evaluation]
+            direction TB
+            SafetyBenchmarks[Safety Benchmarks]
+            FairnessBenchmarks[Fairness Benchmarks]
+            PerformanceBenchmarks[Performance Benchmarks]
+        end
+        VettedModel[(Vetted Models)]
+    end
+
+    %% Observability Layer
+    Obs[(Observability & Attestations)]
+
+    %% Relationships
+
+    %%% Data Transformation
+    Clean --> Normalized
+    Normalized --> Transformd
+    Transformd --> Label
+
+    %%% Data Validation
+    Quality --> Compliance
+    Compliance --> Provenance
+    Provenance --> UsageReq
+
+    %%% Model Training
+    Hyperparameters --> Training
+    Training --> Validation
+    Validation --> Hyperparameters
+
+    %%% Model Evaluation
+    SafetyBenchmarks --> FairnessBenchmarks
+    FairnessBenchmarks --> PerformanceBenchmarks
+
+    %%% Data Flow
+    Ingest -->|Ingests| Sources
+    Ingest -->|Produces| Raw
+    Validate -->|Validates| Raw
+    Transform -->|Processes| VettedData
+    Validate -->|Produces| VettedData
+    Transform -->|Produces| FStore
+    Transform -->|Produces| VettedData
+
+    ModelIngest -->|Ingests| ExtModels
+    ModelIngest -->|Produces| UnvettedModel
+    
+    FStore -->|Ingest| Training
+    VettedModel -->|Loads Pretained| Training
+    Validation -->|Produces| UnvettedModel
+    
+    Eval -->|Validates| UnvettedModel
+    Eval -->|Produces| VettedModel
+
+    %%% Observability
+    Ingest -.->|Logs/Metrics/Attestations| Obs
+    Transform -.->|Logs/Metrics/Attestations| Obs
+    Train -.->|Logs/Metrics/Attestations| Obs
+    Eval -.->|Logs/Metrics/Attestations| Obs
