@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36">
   <diagram id="eY3LwO4huenEqpfGFErz" name="mcp_ra">
-    <mxGraphModel dx="2538" dy="1795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2876" dy="1934" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -239,6 +239,9 @@
         </mxCell>
         <mxCell id="IT3KE_1W8KUtsFbCjz2g-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;align=left;fontFamily=Times New Roman;fontSize=15;" value="Authorization Layer" vertex="1">
           <mxGeometry height="120" width="480" x="180" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="IT3KE_1W8KUtsFbCjz2g-68" edge="1" parent="1" source="IT3KE_1W8KUtsFbCjz2g-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="IT3KE_1W8KUtsFbCjz2g-25">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="IT3KE_1W8KUtsFbCjz2g-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;verticalAlign=top;align=left;fontFamily=Times New Roman;fontSize=15;rotation=0;" value="Protocol &amp; Transport Layer" vertex="1">
           <mxGeometry height="140" width="480" x="180" y="1090" as="geometry" />
