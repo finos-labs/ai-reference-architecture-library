@@ -1,0 +1,921 @@
+{
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "nodes": [
+    {
+      "unique-id": "multi-agent-system",
+      "node-type": "system",
+      "name": "Multi-Agent Reference Architecture",
+      "description": "Modular, governed, zero-trust multi-agent system for enterprise environments, organized into eight layers."
+    },
+    {
+      "unique-id": "user-interaction-layer",
+      "node-type": "system",
+      "name": "User Interaction Layer",
+      "description": "Entry point: the interface through which end users interact and initiate tasks delegated to the agent layer."
+    },
+    {
+      "unique-id": "agent-gateway-layer",
+      "node-type": "system",
+      "name": "Agent Gateway Layer",
+      "description": "Controlled entry point into the agent layer; centralizes agent registration, routing, and guardrail enforcement."
+    },
+    {
+      "unique-id": "agent-layer",
+      "node-type": "system",
+      "name": "Agent Layer",
+      "description": "Core reasoning, coordination, and task-execution: collaboration patterns plus the unified agent runtime."
+    },
+    {
+      "unique-id": "knowledge-layer",
+      "node-type": "system",
+      "name": "Knowledge Layer",
+      "description": "Information foundation: structured/unstructured knowledge sources and retrieval services for grounding."
+    },
+    {
+      "unique-id": "llm-layer",
+      "node-type": "system",
+      "name": "LLM Layer",
+      "description": "Controlled interface for accessing approved large language models via the LLM gateway."
+    },
+    {
+      "unique-id": "mcp-layer",
+      "node-type": "system",
+      "name": "MCP Layer",
+      "description": "Controlled interface for accessing approved MCP servers via the MCP gateway."
+    },
+    {
+      "unique-id": "evaluation-layer",
+      "node-type": "system",
+      "name": "Evaluation Layer",
+      "description": "Continuous oversight: feedback, human supervision, and runtime protection; bidirectional with the agent layer."
+    },
+    {
+      "unique-id": "observability-layer",
+      "node-type": "system",
+      "name": "Observability Layer",
+      "description": "End-to-end visibility: logs, traces, metrics, events, anomalies, and correlation across all layers."
+    },
+    {
+      "unique-id": "user",
+      "node-type": "actor",
+      "name": "User",
+      "description": "Individual or system initiating a request; expresses goals, provides inputs, and reviews outputs."
+    },
+    {
+      "unique-id": "application",
+      "node-type": "webclient",
+      "name": "Application",
+      "description": "Presentation/orchestration surface; forwards user inputs to agents and implements human-in-the-loop controls."
+    },
+    {
+      "unique-id": "agent-registry",
+      "node-type": "service",
+      "name": "Agent Registry",
+      "description": "Catalog of available agents, capabilities, and metadata; supports versioning and lifecycle management."
+    },
+    {
+      "unique-id": "agent-gateway",
+      "node-type": "ai:api-gateway",
+      "name": "Gateway",
+      "description": "Routes requests from the application to the appropriate agent; validates requests and applies routing rules."
+    },
+    {
+      "unique-id": "agent-gateway-guardrails",
+      "node-type": "ai:guardrail",
+      "name": "Guardrails and Policies",
+      "description": "Zero-trust authN/authZ, input validation, content filtering, access control, rate limits, and policy enforcement."
+    },
+    {
+      "unique-id": "agent-collaboration-patterns",
+      "node-type": "system",
+      "name": "Agent Collaboration Patterns",
+      "description": "High-level strategies for how agents work together to decompose and execute tasks."
+    },
+    {
+      "unique-id": "unified-agent-runtime",
+      "node-type": "system",
+      "name": "Unified Agent Runtime",
+      "description": "Secure, sandboxed environment where all agentic reasoning and execution occurs."
+    },
+    {
+      "unique-id": "supervisor-worker",
+      "node-type": "ai:orchestrator",
+      "name": "Supervisor / Worker",
+      "description": "A supervisor agent decomposes a complex task and orchestrates a team of specialized worker agents."
+    },
+    {
+      "unique-id": "skills-based-routing",
+      "node-type": "ai:orchestrator",
+      "name": "Skills-Based Routing",
+      "description": "Routes a request based on a required skill to an available agent that possesses that skill."
+    },
+    {
+      "unique-id": "agent-as-a-tool",
+      "node-type": "ai:agent",
+      "name": "Agent as a Tool",
+      "description": "One agent invokes another agent as if it were a tool, enabling handoff to specialists."
+    },
+    {
+      "unique-id": "state-management",
+      "node-type": "service",
+      "name": "State Management",
+      "description": "Manages the complete state of a task to enable pause, resume, and handoff."
+    },
+    {
+      "unique-id": "secure-execution",
+      "node-type": "service",
+      "name": "Secure Execution",
+      "description": "Intercepts and validates all tool-call requests; handles execution and credentials securely within the sandbox."
+    },
+    {
+      "unique-id": "collaboration-handoff",
+      "node-type": "service",
+      "name": "Collaboration / Handoff",
+      "description": "Stateful collaboration between agents through shared access to memory and state."
+    },
+    {
+      "unique-id": "adaptive-learning",
+      "node-type": "service",
+      "name": "Adaptive Learning",
+      "description": "Generates learning signals from execution outcomes to refine prompts, configurations, and tool selection."
+    },
+    {
+      "unique-id": "workspace-file-system",
+      "node-type": "data-asset",
+      "name": "Workspace File System",
+      "description": "Sandboxed, persistent file system agents use to read/write large artifacts."
+    },
+    {
+      "unique-id": "tools-layer",
+      "node-type": "system",
+      "name": "Tools Layer",
+      "description": "Collection of built-in, trusted tools providing fundamental capabilities."
+    },
+    {
+      "unique-id": "short-term-memory",
+      "node-type": "ai:memory",
+      "name": "Short-Term Memory",
+      "description": "Manages the immediate context for the agent's reasoning loop."
+    },
+    {
+      "unique-id": "long-term-memory",
+      "node-type": "ai:memory",
+      "name": "Long-Term Memory",
+      "description": "Maintains durable information across sessions for personalization and continuity."
+    },
+    {
+      "unique-id": "mcp-client",
+      "node-type": "ai:tool",
+      "name": "MCP Client",
+      "description": "Secure bridge from the runtime to the external MCP layer for specialized, high-risk, or enterprise tools."
+    },
+    {
+      "unique-id": "shell-tool",
+      "node-type": "ai:tool",
+      "name": "Shell Tool",
+      "description": "Sandboxed shell environment for executing basic commands."
+    },
+    {
+      "unique-id": "io-tool",
+      "node-type": "ai:tool",
+      "name": "I/O Tool",
+      "description": "Reads from and writes to the workspace file system."
+    },
+    {
+      "unique-id": "web-search-tool",
+      "node-type": "ai:tool",
+      "name": "Web Search Tool",
+      "description": "Built-in tool for performing web searches."
+    },
+    {
+      "unique-id": "in-session-context-manager",
+      "node-type": "service",
+      "name": "In-Session Context Manager",
+      "description": "Employs trimming and summarization to manage context length, cost, and latency."
+    },
+    {
+      "unique-id": "session-summaries",
+      "node-type": "data-asset",
+      "name": "Session Summaries",
+      "description": "Stores summaries of past interactions for future reference."
+    },
+    {
+      "unique-id": "user-task-personalization",
+      "node-type": "data-asset",
+      "name": "User/Task Personalization",
+      "description": "Retains user preferences and task-specific information to tailor future interactions."
+    },
+    {
+      "unique-id": "source-bases",
+      "node-type": "ai:knowledge-base",
+      "name": "Source Bases",
+      "description": "Internal/external repositories of structured, unstructured, or graph-based authoritative information."
+    },
+    {
+      "unique-id": "vector-dbs",
+      "node-type": "ai:vector-store",
+      "name": "Vector DBs",
+      "description": "Vector-based retrieval for semantic search and grounding over large text corpora."
+    },
+    {
+      "unique-id": "model-registry",
+      "node-type": "service",
+      "name": "Model Registry",
+      "description": "Catalog of approved models with metadata, versions, configuration, and usage constraints."
+    },
+    {
+      "unique-id": "llm-gateway",
+      "node-type": "ai:api-gateway",
+      "name": "LLM Gateway",
+      "description": "Routes inference requests from the agent layer to the appropriate approved model instance."
+    },
+    {
+      "unique-id": "llm-guardrails",
+      "node-type": "ai:guardrail",
+      "name": "Guardrails and Policies (LLM)",
+      "description": "Zero-trust authN/authZ, prompt-injection input validation, output filtering, access control, rate and cost limits."
+    },
+    {
+      "unique-id": "llm-zoo",
+      "node-type": "ai:llm",
+      "name": "LLM Zoo",
+      "description": "Pool of approved foundation/inference models the gateway routes to."
+    },
+    {
+      "unique-id": "mcp-server-registry",
+      "node-type": "service",
+      "name": "MCP Server Registry",
+      "description": "Catalog of approved MCP servers with capabilities, configuration, and usage constraints."
+    },
+    {
+      "unique-id": "mcp-gateway",
+      "node-type": "ai:api-gateway",
+      "name": "MCP Gateway",
+      "description": "Routes MCP connection requests from the agent layer to the appropriate approved server instance."
+    },
+    {
+      "unique-id": "mcp-guardrails",
+      "node-type": "ai:guardrail",
+      "name": "Guardrails and Policies (MCP)",
+      "description": "Zero-trust authN/authZ, tool-access policy, rate limits, and tool-call parameter validation."
+    },
+    {
+      "unique-id": "mcp-zoo",
+      "node-type": "ai:mcp-server",
+      "name": "MCP Zoo",
+      "description": "Pool of approved MCP servers exposing specialized and enterprise-specific tools."
+    },
+    {
+      "unique-id": "feedback-engine",
+      "node-type": "ai:eval-monitor",
+      "name": "Feedback Engine",
+      "description": "Collects and aggregates correctness, preference, and quality feedback signals from users and systems."
+    },
+    {
+      "unique-id": "human-supervision",
+      "node-type": "ai:human-in-the-loop",
+      "name": "Human Supervision",
+      "description": "Human review/approve/correct/override of agent outputs; human-in-the-loop and human-over-the-loop workflows."
+    },
+    {
+      "unique-id": "runtime-protection",
+      "node-type": "ai:guardrail",
+      "name": "Runtime Protection",
+      "description": "Monitors actions and outputs during execution; blocks disallowed actions and triggers escalation."
+    },
+    {
+      "unique-id": "logs",
+      "node-type": "ai:observability",
+      "name": "Logs",
+      "description": "Structured/unstructured logs from all layers for debugging, audit, and historical analysis."
+    },
+    {
+      "unique-id": "traces",
+      "node-type": "ai:observability",
+      "name": "Traces",
+      "description": "Distributed tracing across the request lifecycle for root-cause and performance analysis."
+    },
+    {
+      "unique-id": "metrics",
+      "node-type": "ai:observability",
+      "name": "Metrics",
+      "description": "Latency, throughput, error rates, usage statistics, and resource consumption measurements."
+    },
+    {
+      "unique-id": "events",
+      "node-type": "ai:observability",
+      "name": "Events",
+      "description": "Significant system events: policy violations, model-selection decisions, escalations, evaluation outcomes."
+    },
+    {
+      "unique-id": "anomaly-detection",
+      "node-type": "ai:observability",
+      "name": "Anomaly Detection",
+      "description": "Identifies unusual or unexpected patterns in logs, traces, metrics, or events."
+    },
+    {
+      "unique-id": "correlation-engine",
+      "node-type": "ai:observability",
+      "name": "Correlation Engine",
+      "description": "Correlates signals across logs, traces, metrics, and events into a unified view of system behavior."
+    }
+  ],
+  "relationships": [
+    {
+      "unique-id": "multi-agent-system-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "multi-agent-system",
+          "nodes": [
+            "user-interaction-layer",
+            "agent-gateway-layer",
+            "agent-layer",
+            "knowledge-layer",
+            "llm-layer",
+            "mcp-layer",
+            "evaluation-layer",
+            "observability-layer"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "user-interaction-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "user-interaction-layer",
+          "nodes": [
+            "user",
+            "application"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "agent-gateway-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "agent-gateway-layer",
+          "nodes": [
+            "agent-registry",
+            "agent-gateway",
+            "agent-gateway-guardrails"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "agent-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "agent-layer",
+          "nodes": [
+            "agent-collaboration-patterns",
+            "unified-agent-runtime"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "agent-collaboration-patterns-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "agent-collaboration-patterns",
+          "nodes": [
+            "supervisor-worker",
+            "skills-based-routing",
+            "agent-as-a-tool"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "unified-agent-runtime-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "unified-agent-runtime",
+          "nodes": [
+            "state-management",
+            "secure-execution",
+            "collaboration-handoff",
+            "adaptive-learning",
+            "workspace-file-system",
+            "tools-layer",
+            "short-term-memory",
+            "long-term-memory"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "tools-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "tools-layer",
+          "nodes": [
+            "mcp-client",
+            "shell-tool",
+            "io-tool",
+            "web-search-tool"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "short-term-memory-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "short-term-memory",
+          "nodes": [
+            "in-session-context-manager"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "long-term-memory-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "long-term-memory",
+          "nodes": [
+            "session-summaries",
+            "user-task-personalization"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "knowledge-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "knowledge-layer",
+          "nodes": [
+            "source-bases",
+            "vector-dbs"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "llm-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "llm-layer",
+          "nodes": [
+            "model-registry",
+            "llm-gateway",
+            "llm-guardrails",
+            "llm-zoo"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "mcp-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "mcp-layer",
+          "nodes": [
+            "mcp-server-registry",
+            "mcp-gateway",
+            "mcp-guardrails",
+            "mcp-zoo"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "evaluation-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "evaluation-layer",
+          "nodes": [
+            "feedback-engine",
+            "human-supervision",
+            "runtime-protection"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "observability-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "observability-layer",
+          "nodes": [
+            "logs",
+            "traces",
+            "metrics",
+            "events",
+            "anomaly-detection",
+            "correlation-engine"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "user-to-app",
+      "relationship-type": {
+        "interacts": {
+          "actor": "user",
+          "nodes": [
+            "application"
+          ]
+        }
+      },
+      "description": "User interacts with the application to express goals and review outputs."
+    },
+    {
+      "unique-id": "app-to-gw",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "application"
+          },
+          "destination": {
+            "node": "agent-gateway"
+          }
+        }
+      },
+      "protocol": "HTTPS",
+      "description": "Application forwards user requests to the agent gateway."
+    },
+    {
+      "unique-id": "gw-to-guard",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-gateway"
+          },
+          "destination": {
+            "node": "agent-gateway-guardrails"
+          }
+        }
+      },
+      "description": "Requests pass through zero-trust guardrails before reaching agents."
+    },
+    {
+      "unique-id": "gw-to-registry",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-gateway"
+          },
+          "destination": {
+            "node": "agent-registry"
+          }
+        }
+      },
+      "description": "Gateway looks up the target agent in the registry."
+    },
+    {
+      "unique-id": "gw-to-runtime",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-gateway"
+          },
+          "destination": {
+            "node": "unified-agent-runtime"
+          }
+        }
+      },
+      "description": "Gateway routes validated requests to the agent runtime."
+    },
+    {
+      "unique-id": "runtime-to-llmgw",
+      "relationship-type": {
+        "interacts": {
+          "actor": "unified-agent-runtime",
+          "nodes": [
+            "llm-gateway"
+          ]
+        }
+      },
+      "description": "Agents submit inference requests via the LLM gateway."
+    },
+    {
+      "unique-id": "llmgw-to-guard",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "llm-gateway"
+          },
+          "destination": {
+            "node": "llm-guardrails"
+          }
+        }
+      },
+      "description": "Inference requests pass through LLM guardrails."
+    },
+    {
+      "unique-id": "llmgw-to-registry",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "llm-gateway"
+          },
+          "destination": {
+            "node": "model-registry"
+          }
+        }
+      },
+      "description": "Gateway resolves approved models via the model registry."
+    },
+    {
+      "unique-id": "llmgw-to-zoo",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "llm-gateway"
+          },
+          "destination": {
+            "node": "llm-zoo"
+          }
+        }
+      },
+      "description": "Gateway routes to the selected approved model instance."
+    },
+    {
+      "unique-id": "mcpc-to-mcpgw",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-client"
+          },
+          "destination": {
+            "node": "mcp-gateway"
+          }
+        }
+      },
+      "description": "MCP client bridges the runtime to the MCP gateway."
+    },
+    {
+      "unique-id": "mcpgw-to-guard",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-gateway"
+          },
+          "destination": {
+            "node": "mcp-guardrails"
+          }
+        }
+      },
+      "description": "MCP requests pass through MCP guardrails."
+    },
+    {
+      "unique-id": "mcpgw-to-registry",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-gateway"
+          },
+          "destination": {
+            "node": "mcp-server-registry"
+          }
+        }
+      },
+      "description": "Gateway resolves approved servers via the MCP server registry."
+    },
+    {
+      "unique-id": "mcpgw-to-zoo",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-gateway"
+          },
+          "destination": {
+            "node": "mcp-zoo"
+          }
+        }
+      },
+      "description": "Gateway routes to the selected approved MCP server."
+    },
+    {
+      "unique-id": "runtime-to-vdb",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "unified-agent-runtime"
+          },
+          "destination": {
+            "node": "vector-dbs"
+          }
+        }
+      },
+      "description": "Agents perform semantic retrieval for grounding."
+    },
+    {
+      "unique-id": "runtime-to-sb",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "unified-agent-runtime"
+          },
+          "destination": {
+            "node": "source-bases"
+          }
+        }
+      },
+      "description": "Agents query authoritative knowledge sources."
+    },
+    {
+      "unique-id": "rp-to-runtime",
+      "relationship-type": {
+        "interacts": {
+          "actor": "runtime-protection",
+          "nodes": [
+            "unified-agent-runtime"
+          ]
+        }
+      },
+      "description": "Runtime protection monitors and can intervene in agent execution."
+    },
+    {
+      "unique-id": "runtime-to-fe",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "unified-agent-runtime"
+          },
+          "destination": {
+            "node": "feedback-engine"
+          }
+        }
+      },
+      "description": "Runtime emits execution outcomes to the feedback engine."
+    },
+    {
+      "unique-id": "fe-to-adl",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "feedback-engine"
+          },
+          "destination": {
+            "node": "adaptive-learning"
+          }
+        }
+      },
+      "description": "Feedback informs adaptive-learning signals."
+    },
+    {
+      "unique-id": "app-to-hs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "application"
+          },
+          "destination": {
+            "node": "human-supervision"
+          }
+        }
+      },
+      "description": "Application surfaces outputs for human review and approval."
+    },
+    {
+      "unique-id": "uil-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "user-interaction-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits interaction logs and session events."
+    },
+    {
+      "unique-id": "agl-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-gateway-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits routing, policy, and access signals."
+    },
+    {
+      "unique-id": "al-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits reasoning traces, refinement steps, and execution metrics."
+    },
+    {
+      "unique-id": "kl-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "knowledge-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits retrieval metrics and search traces."
+    },
+    {
+      "unique-id": "llml-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "llm-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits model routing, policy, and usage signals."
+    },
+    {
+      "unique-id": "mcpl-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits tool-access, policy, and routing signals."
+    },
+    {
+      "unique-id": "el-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "evaluation-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits feedback events, supervision outcomes, and runtime-protection signals."
+    }
+  ],
+  "decorators": [
+    {
+      "unique-id": "aigf-governance-overlay",
+      "type": "aigf-governance",
+      "target": [
+        "ma_ref_arch_jan_2026.v2.calm.json"
+      ],
+      "applies-to": [
+        "agent-gateway",
+        "agent-gateway-guardrails",
+        "supervisor-worker",
+        "skills-based-routing",
+        "agent-as-a-tool",
+        "short-term-memory",
+        "long-term-memory",
+        "mcp-client",
+        "shell-tool",
+        "io-tool",
+        "web-search-tool",
+        "source-bases",
+        "vector-dbs",
+        "llm-gateway",
+        "llm-guardrails",
+        "llm-zoo",
+        "mcp-gateway",
+        "mcp-guardrails",
+        "mcp-zoo",
+        "feedback-engine",
+        "human-supervision",
+        "runtime-protection",
+        "logs",
+        "traces",
+        "metrics",
+        "events",
+        "anomaly-detection",
+        "correlation-engine"
+      ],
+      "data": {
+        "framework": "FINOS AI Governance Framework",
+        "version": "2.0",
+        "governance-score": 0,
+        "assessment-date": "2026-06-18"
+      }
+    }
+  ]
+}

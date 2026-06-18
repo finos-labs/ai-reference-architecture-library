@@ -1,0 +1,201 @@
+<svg width="1800" height="1250" viewBox="0 0 1800 1250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 26px; font-weight: bold; fill: #111; }
+      .layer-title { font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; fill: #111; }
+      .section-title { font-family: Arial, sans-serif; font-size: 17px; font-weight: bold; fill: #111; }
+      .text { font-family: Arial, sans-serif; font-size: 15px; fill: #111; }
+      .small { font-family: Arial, sans-serif; font-size: 13px; fill: #111; }
+      .tiny { font-family: Arial, sans-serif; font-size: 12px; fill: #111; }
+
+      .layer { fill: #f6f6f6; stroke: #222; stroke-width: 2; }
+      .subLayer { fill: #ffffff; stroke: #333; stroke-width: 1.5; }
+      .component { fill: #ffffff; stroke: #333; stroke-width: 1.4; rx: 8; ry: 8; }
+      .pattern { fill: #eef6ff; stroke: #1f5f99; stroke-width: 2; rx: 10; ry: 10; }
+      .supervisor { fill: #dfefff; stroke: #1f5f99; stroke-width: 2; rx: 10; ry: 10; }
+      .worker { fill: #ffffff; stroke: #1f5f99; stroke-width: 1.5; rx: 8; ry: 8; }
+      .control { fill: #fff7e6; stroke: #8a5a00; stroke-width: 1.5; rx: 8; ry: 8; }
+      .eval { fill: #fff7e6; stroke: #8a5a00; stroke-width: 1.4; rx: 8; ry: 8; }
+
+      .arrow { stroke: #333; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead); }
+      .blue-arrow { stroke: #1f5f99; stroke-width: 2; fill: none; marker-end: url(#blue-arrowhead); }
+      .gold-arrow { stroke: #8a5a00; stroke-width: 1.8; fill: none; stroke-dasharray: 6 4; marker-end: url(#gold-arrowhead); }
+      .dashed { stroke: #555; stroke-width: 1.5; fill: none; stroke-dasharray: 6 4; marker-end: url(#arrowhead); }
+    </style>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="blue-arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1f5f99"/>
+    </marker>
+    <marker id="gold-arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8a5a00"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="44" class="title">Hybrid Hierarchical and Parallel Multi-Agent Reference Architecture</text>
+
+  <!-- User Interaction Layer -->
+  <rect x="40" y="70" width="1720" height="105" class="layer"/>
+  <text x="62" y="102" class="layer-title">User Interaction Layer</text>
+  <rect x="410" y="112" width="220" height="42" class="component"/>
+  <text x="492" y="138" class="text">User</text>
+  <rect x="720" y="112" width="260" height="42" class="component"/>
+  <text x="811" y="138" class="text">Application</text>
+
+  <!-- Agent Gateway Layer -->
+  <rect x="40" y="195" width="1720" height="120" class="layer"/>
+  <text x="62" y="227" class="layer-title">Agent Gateway Layer</text>
+  <rect x="260" y="245" width="270" height="42" class="component"/>
+  <text x="346" y="271" class="text">Agent Registry</text>
+  <rect x="660" y="245" width="230" height="42" class="component"/>
+  <text x="747" y="271" class="text">Gateway</text>
+  <rect x="1030" y="245" width="330" height="42" class="control"/>
+  <text x="1110" y="271" class="text">Guardrails and Policies</text>
+
+  <!-- Agent Layer -->
+  <rect x="40" y="335" width="1720" height="470" class="layer"/>
+  <text x="62" y="367" class="layer-title">Agent Layer</text>
+
+  <!-- Agent Collaboration Patterns -->
+  <rect x="75" y="390" width="1050" height="370" class="subLayer"/>
+  <text x="100" y="420" class="section-title">Agent Collaboration Patterns</text>
+
+  <rect x="110" y="445" width="980" height="285" class="pattern"/>
+  <text x="135" y="475" class="section-title">Hybrid Hierarchical + Parallel Pattern</text>
+
+  <rect x="380" y="500" width="440" height="58" class="supervisor"/>
+  <text x="492" y="523" class="text">Supervisor / Orchestrator Agent</text>
+  <text x="455" y="543" class="small">Plan | Delegate | Track State | Reconcile | Escalate</text>
+
+  <rect x="170" y="600" width="185" height="50" class="worker"/>
+  <text x="216" y="622" class="text">Worker Agent A</text>
+  <text x="208" y="641" class="tiny">Specialist subtask</text>
+
+  <rect x="395" y="600" width="185" height="50" class="worker"/>
+  <text x="441" y="622" class="text">Worker Agent B</text>
+  <text x="433" y="641" class="tiny">Specialist subtask</text>
+
+  <rect x="620" y="600" width="185" height="50" class="worker"/>
+  <text x="666" y="622" class="text">Worker Agent C</text>
+  <text x="658" y="641" class="tiny">Specialist subtask</text>
+
+  <rect x="845" y="600" width="185" height="50" class="worker"/>
+  <text x="891" y="622" class="text">Worker Agent N</text>
+  <text x="883" y="641" class="tiny">Specialist subtask</text>
+
+  <text x="448" y="585" class="small">parallel delegated subtasks</text>
+
+  <rect x="205" y="685" width="790" height="34" class="control"/>
+  <text x="320" y="707" class="text">Control capabilities: Aggregation / Reconciliation | Policy Gate | Human Review / Escalation Routing</text>
+
+  <!-- Unified Agent Runtime -->
+  <rect x="1170" y="390" width="555" height="370" class="subLayer"/>
+  <text x="1195" y="420" class="section-title">Unified Agent Runtime</text>
+
+  <rect x="1200" y="450" width="230" height="40" class="component"/>
+  <text x="1258" y="475" class="text">State Management</text>
+
+  <rect x="1460" y="450" width="230" height="40" class="component"/>
+  <text x="1518" y="475" class="text">Secure Execution</text>
+
+  <rect x="1200" y="510" width="230" height="40" class="component"/>
+  <text x="1242" y="535" class="text">Collaboration / Handoff</text>
+
+  <rect x="1460" y="510" width="230" height="40" class="component"/>
+  <text x="1522" y="535" class="text">Adaptive Learning</text>
+
+  <rect x="1200" y="570" width="230" height="40" class="component"/>
+  <text x="1250" y="595" class="text">Workspace File System</text>
+
+  <rect x="1460" y="570" width="230" height="40" class="component"/>
+  <text x="1542" y="595" class="text">Tools Layer</text>
+
+  <rect x="1200" y="640" width="230" height="40" class="component"/>
+  <text x="1252" y="665" class="text">Short-Term Memory</text>
+
+  <rect x="1460" y="640" width="230" height="40" class="component"/>
+  <text x="1515" y="665" class="text">Long-Term Memory</text>
+
+  <text x="1210" y="715" class="small">Runtime hosts supervisor and worker agents with governed state, tools, memory, and execution controls.</text>
+
+  <!-- Supporting Layers -->
+  <rect x="40" y="830" width="405" height="135" class="layer"/>
+  <text x="62" y="862" class="layer-title">Knowledge Layer</text>
+  <rect x="85" y="895" width="150" height="42" class="component"/>
+  <text x="121" y="921" class="small">Source Bases</text>
+  <rect x="260" y="895" width="140" height="42" class="component"/>
+  <text x="300" y="921" class="small">Vector DBs</text>
+
+  <rect x="475" y="830" width="405" height="135" class="layer"/>
+  <text x="497" y="862" class="layer-title">LLM Layer</text>
+  <rect x="515" y="895" width="150" height="42" class="component"/>
+  <text x="548" y="921" class="small">Model Registry</text>
+  <rect x="690" y="895" width="150" height="42" class="component"/>
+  <text x="729" y="921" class="small">LLM Gateway</text>
+  <rect x="515" y="945" width="325" height="1" fill="#cccccc"/>
+
+  <rect x="910" y="830" width="405" height="135" class="layer"/>
+  <text x="932" y="862" class="layer-title">MCP Layer</text>
+  <rect x="950" y="895" width="155" height="42" class="component"/>
+  <text x="986" y="921" class="small">MCP Registry</text>
+  <rect x="1130" y="895" width="145" height="42" class="component"/>
+  <text x="1166" y="921" class="small">MCP Gateway</text>
+
+  <rect x="1345" y="830" width="415" height="135" class="layer"/>
+  <text x="1367" y="862" class="layer-title">Evaluation Layer</text>
+  <rect x="1385" y="895" width="110" height="42" class="component"/>
+  <text x="1414" y="921" class="small">Feedback</text>
+  <rect x="1515" y="895" width="105" height="42" class="eval"/>
+  <text x="1549" y="921" class="small">Human</text>
+  <rect x="1640" y="895" width="90" height="42" class="eval"/>
+  <text x="1658" y="921" class="small">Runtime</text>
+
+  <!-- Observability Layer -->
+  <rect x="40" y="995" width="1720" height="150" class="layer"/>
+  <text x="62" y="1027" class="layer-title">Observability Layer</text>
+
+  <rect x="190" y="1065" width="150" height="42" class="component"/>
+  <text x="249" y="1091" class="text">Logs</text>
+
+  <rect x="410" y="1065" width="150" height="42" class="component"/>
+  <text x="462" y="1091" class="text">Traces</text>
+
+  <rect x="630" y="1065" width="150" height="42" class="component"/>
+  <text x="679" y="1091" class="text">Metrics</text>
+
+  <rect x="850" y="1065" width="150" height="42" class="component"/>
+  <text x="900" y="1091" class="text">Events</text>
+
+  <rect x="1070" y="1065" width="220" height="42" class="component"/>
+  <text x="1112" y="1091" class="text">Anomaly Detection</text>
+
+  <rect x="1360" y="1065" width="230" height="42" class="component"/>
+  <text x="1408" y="1091" class="text">Correlation Engine</text>
+
+  <!-- Light-touch architecture relationships -->
+  <path d="M980 133 L660 245" class="arrow"/>
+  <path d="M890 266 L1030 266" class="gold-arrow"/>
+  <path d="M775 287 L600 390" class="arrow"/>
+
+  <path d="M600 558 L262 600" class="blue-arrow"/>
+  <path d="M600 558 L487 600" class="blue-arrow"/>
+  <path d="M600 558 L712 600" class="blue-arrow"/>
+  <path d="M600 558 L937 600" class="blue-arrow"/>
+
+  <path d="M262 650 L460 685" class="dashed"/>
+  <path d="M487 650 L535 685" class="dashed"/>
+  <path d="M712 650 L665 685" class="dashed"/>
+  <path d="M937 650 L740 685" class="dashed"/>
+
+  <path d="M1090 590 L1170 590" class="dashed"/>
+  <text x="1110" y="575" class="tiny">executed by runtime</text>
+  <path d="M600 730 L600 830" class="dashed"/>
+  <path d="M765 730 L765 830" class="dashed"/>
+  <path d="M1030 730 L1030 830" class="dashed"/>
+  <path d="M600 730 L1515 895" class="gold-arrow"/>
+  <path d="M900 760 L900 995" class="dashed"/>
+
+  <text x="60" y="1190" class="small">Pattern focus: supervisor/worker hierarchy plus parallel specialist execution. Aggregation, reconciliation, policy gating, and escalation are orchestration/control capabilities, not independent peer agents.</text>
+</svg>

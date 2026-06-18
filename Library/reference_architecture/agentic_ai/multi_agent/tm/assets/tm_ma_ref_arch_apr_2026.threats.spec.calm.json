@@ -1,0 +1,4118 @@
+{
+  "$schema": "https://calm.finos.org/release/1.2/meta/calm.json",
+  "nodes": [
+    {
+      "unique-id": "multi-agent-system",
+      "node-type": "system",
+      "name": "Multi-Agent Reference Architecture",
+      "description": "Modular, governed, zero-trust multi-agent system for enterprise environments, organized into eight layers."
+    },
+    {
+      "unique-id": "user-interaction-layer",
+      "node-type": "system",
+      "name": "User Interaction Layer",
+      "description": "Entry point: the interface through which end users interact and initiate tasks delegated to the agent layer."
+    },
+    {
+      "unique-id": "agent-gateway-layer",
+      "node-type": "system",
+      "name": "Agent Gateway Layer",
+      "description": "Controlled entry point into the agent layer; centralizes agent registration, routing, and guardrail enforcement."
+    },
+    {
+      "unique-id": "agent-layer",
+      "node-type": "system",
+      "name": "Agent Layer",
+      "description": "Core reasoning, coordination, and task-execution: collaboration patterns plus the unified agent runtime.",
+      "controls": {
+        "C3": {
+          "description": "Design workflows to require human approval for high-risk actions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C3",
+                "mitigates": [
+                  "T-XL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-XL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C16": {
+          "description": "Ensure child agents are created with a scoped, delegated workload identity and a subset of the parent agent's permissions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C16",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C19": {
+          "description": "Integrate with Data Loss Prevention (DLP) solutions to scan agent outputs for sensitive data",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C19",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C21": {
+          "description": "Implement automated response playbooks (SOAR) for high-confidence alerts",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C21",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C22": {
+          "description": "Implement resource quotas and limits (CPU, memory, execution time) within the agent runtime environment",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C22",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C25": {
+          "description": "Implement a strict vetting and scanning process for all new models and components before they are registered in the platform",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C25",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C26": {
+          "description": "Enforce strict, non-bypassable workflows for tasks that require human supervision",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C26",
+                "mitigates": [
+                  "T-XL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C30": {
+          "description": "Enforce cryptographic signing and integrity verification for all registered models; validate signatures at load time and reject any model whose signature cannot be verified",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C30",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C31": {
+          "description": "Maintain a Software Bill of Materials (SBOM) for all agent components, dependencies, and models; integrate SBOM generation and vulnerability scanning into the CI/CD pipeline",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C31",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C32": {
+          "description": "Enforce data minimisation at the agent runtime layer; pass only the data fields required for each tool call and strip all fields not needed for the immediate task before dispatch",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C32",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-XL-01",
+            "name": "MNPI Leakage Across Agent Boundaries",
+            "description": "MNPI handled by an authorised agent is passed to an agent or tool not authorised for it - a wall-crossing/MAR breach.",
+            "controls": [
+              "C8",
+              "C16",
+              "C19",
+              "C32"
+            ]
+          },
+          {
+            "id": "T-XL-02",
+            "name": "Regulatory Reporting Manipulation",
+            "description": "An agent producing regulatory-submission output generates false/altered output that is submitted without detection.",
+            "controls": [
+              "C3",
+              "C9",
+              "C26"
+            ]
+          },
+          {
+            "id": "T-XL-03",
+            "name": "Supply Chain Compromise",
+            "description": "An attacker introduces a backdoored model, library, dataset, or MCP server via the CI/CD or onboarding pipeline.",
+            "controls": [
+              "C25",
+              "C30",
+              "C31"
+            ]
+          },
+          {
+            "id": "T-XL-04",
+            "name": "Cascade Failure Propagation",
+            "description": "A failure or compromise in one agent or dependency propagates through dependencies into system-wide unavailability or degraded behaviour.",
+            "controls": [
+              "C15",
+              "C21",
+              "C22"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "knowledge-layer",
+      "node-type": "system",
+      "name": "Knowledge Layer",
+      "description": "Information foundation: structured/unstructured knowledge sources and retrieval services for grounding.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C16": {
+          "description": "Ensure child agents are created with a scoped, delegated workload identity and a subset of the parent agent's permissions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C16",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C19": {
+          "description": "Integrate with Data Loss Prevention (DLP) solutions to scan agent outputs for sensitive data",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C19",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C32": {
+          "description": "Enforce data minimisation at the agent runtime layer; pass only the data fields required for each tool call and strip all fields not needed for the immediate task before dispatch",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C32",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-XL-01",
+            "name": "MNPI Leakage Across Agent Boundaries",
+            "description": "MNPI handled by an authorised agent is passed to an agent or tool not authorised for it - a wall-crossing/MAR breach.",
+            "controls": [
+              "C8",
+              "C16",
+              "C19",
+              "C32"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "llm-layer",
+      "node-type": "system",
+      "name": "LLM Layer",
+      "description": "Controlled interface for accessing approved large language models via the LLM gateway.",
+      "controls": {
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C21": {
+          "description": "Implement automated response playbooks (SOAR) for high-confidence alerts",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C21",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C22": {
+          "description": "Implement resource quotas and limits (CPU, memory, execution time) within the agent runtime environment",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C22",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C25": {
+          "description": "Implement a strict vetting and scanning process for all new models and components before they are registered in the platform",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C25",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C30": {
+          "description": "Enforce cryptographic signing and integrity verification for all registered models; validate signatures at load time and reject any model whose signature cannot be verified",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C30",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C31": {
+          "description": "Maintain a Software Bill of Materials (SBOM) for all agent components, dependencies, and models; integrate SBOM generation and vulnerability scanning into the CI/CD pipeline",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C31",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-XL-03",
+            "name": "Supply Chain Compromise",
+            "description": "An attacker introduces a backdoored model, library, dataset, or MCP server via the CI/CD or onboarding pipeline.",
+            "controls": [
+              "C25",
+              "C30",
+              "C31"
+            ]
+          },
+          {
+            "id": "T-XL-04",
+            "name": "Cascade Failure Propagation",
+            "description": "A failure or compromise in one agent or dependency propagates through dependencies into system-wide unavailability or degraded behaviour.",
+            "controls": [
+              "C15",
+              "C21",
+              "C22"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "mcp-layer",
+      "node-type": "system",
+      "name": "MCP Layer",
+      "description": "Controlled interface for accessing approved MCP servers via the MCP gateway.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C16": {
+          "description": "Ensure child agents are created with a scoped, delegated workload identity and a subset of the parent agent's permissions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C16",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C19": {
+          "description": "Integrate with Data Loss Prevention (DLP) solutions to scan agent outputs for sensitive data",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C19",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C21": {
+          "description": "Implement automated response playbooks (SOAR) for high-confidence alerts",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C21",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C22": {
+          "description": "Implement resource quotas and limits (CPU, memory, execution time) within the agent runtime environment",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C22",
+                "mitigates": [
+                  "T-XL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C25": {
+          "description": "Implement a strict vetting and scanning process for all new models and components before they are registered in the platform",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C25",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C30": {
+          "description": "Enforce cryptographic signing and integrity verification for all registered models; validate signatures at load time and reject any model whose signature cannot be verified",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C30",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C31": {
+          "description": "Maintain a Software Bill of Materials (SBOM) for all agent components, dependencies, and models; integrate SBOM generation and vulnerability scanning into the CI/CD pipeline",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C31",
+                "mitigates": [
+                  "T-XL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C32": {
+          "description": "Enforce data minimisation at the agent runtime layer; pass only the data fields required for each tool call and strip all fields not needed for the immediate task before dispatch",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C32",
+                "mitigates": [
+                  "T-XL-01"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-XL-01",
+            "name": "MNPI Leakage Across Agent Boundaries",
+            "description": "MNPI handled by an authorised agent is passed to an agent or tool not authorised for it - a wall-crossing/MAR breach.",
+            "controls": [
+              "C8",
+              "C16",
+              "C19",
+              "C32"
+            ]
+          },
+          {
+            "id": "T-XL-03",
+            "name": "Supply Chain Compromise",
+            "description": "An attacker introduces a backdoored model, library, dataset, or MCP server via the CI/CD or onboarding pipeline.",
+            "controls": [
+              "C25",
+              "C30",
+              "C31"
+            ]
+          },
+          {
+            "id": "T-XL-04",
+            "name": "Cascade Failure Propagation",
+            "description": "A failure or compromise in one agent or dependency propagates through dependencies into system-wide unavailability or degraded behaviour.",
+            "controls": [
+              "C15",
+              "C21",
+              "C22"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "evaluation-layer",
+      "node-type": "system",
+      "name": "Evaluation Layer",
+      "description": "Continuous oversight: feedback, human supervision, and runtime protection; bidirectional with the agent layer.",
+      "controls": {
+        "C3": {
+          "description": "Design workflows to require human approval for high-risk actions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C3",
+                "mitigates": [
+                  "T-XL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-XL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C26": {
+          "description": "Enforce strict, non-bypassable workflows for tasks that require human supervision",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C26",
+                "mitigates": [
+                  "T-XL-02"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-XL-02",
+            "name": "Regulatory Reporting Manipulation",
+            "description": "An agent producing regulatory-submission output generates false/altered output that is submitted without detection.",
+            "controls": [
+              "C3",
+              "C9",
+              "C26"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "observability-layer",
+      "node-type": "system",
+      "name": "Observability Layer",
+      "description": "End-to-end visibility: logs, traces, metrics, events, anomalies, and correlation across all layers."
+    },
+    {
+      "unique-id": "user",
+      "node-type": "actor",
+      "name": "User",
+      "description": "Individual or system initiating a request; expresses goals, provides inputs, and reviews outputs.",
+      "controls": {
+        "C4": {
+          "description": "Integrate with an enterprise Identity Provider (IDP) enforcing Multi-Factor Authentication (MFA)",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C4",
+                "mitigates": [
+                  "T-UIL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-UIL-02"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-UIL-02",
+            "name": "User Impersonation",
+            "description": "An attacker compromises or forges credentials to impersonate a legitimate user, inheriting their permissions and agent-delegated authority.",
+            "controls": [
+              "C4",
+              "C5"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "application",
+      "node-type": "webclient",
+      "name": "Application",
+      "description": "Presentation/orchestration surface; forwards user inputs to agents and implements human-in-the-loop controls.",
+      "controls": {
+        "C1": {
+          "description": "Implement input validation libraries and custom rules at the application layer",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C1",
+                "mitigates": [
+                  "T-UIL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C2": {
+          "description": "Use a specialised AI security tool, integrated as part of a gateway (Agent, MCP, or LLM) or as a standalone firewall, to inspect, validate, and sanitise prompts and responses for content-based threats",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C2",
+                "mitigates": [
+                  "T-UIL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C3": {
+          "description": "Design workflows to require human approval for high-risk actions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C3",
+                "mitigates": [
+                  "T-UIL-01",
+                  "T-UIL-06"
+                ]
+              }
+            }
+          ]
+        },
+        "C4": {
+          "description": "Integrate with an enterprise Identity Provider (IDP) enforcing Multi-Factor Authentication (MFA)",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C4",
+                "mitigates": [
+                  "T-UIL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-UIL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C6": {
+          "description": "Configure rate limiting and throttling on API endpoints",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C6",
+                "mitigates": [
+                  "T-UIL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C7": {
+          "description": "Deploy a Web Application Firewall (WAF) with rulesets to block common attack vectors",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C7",
+                "mitigates": [
+                  "T-UIL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-UIL-03",
+                  "T-UIL-06"
+                ]
+              }
+            }
+          ]
+        },
+        "C19": {
+          "description": "Integrate with Data Loss Prevention (DLP) solutions to scan agent outputs for sensitive data",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C19",
+                "mitigates": [
+                  "T-UIL-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C23": {
+          "description": "Sanitise all agent-generated output to remove or neutralise malicious code before it is displayed to users or passed to other systems",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C23",
+                "mitigates": [
+                  "T-UIL-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C26": {
+          "description": "Enforce strict, non-bypassable workflows for tasks that require human supervision",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C26",
+                "mitigates": [
+                  "T-UIL-06"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-UIL-01",
+            "name": "Malicious User Input",
+            "description": "A user submits crafted inputs (prompt injection, jailbreak, instruction-carrying payloads) to exploit the agent system or cause harmful downstream actions.",
+            "controls": [
+              "C1",
+              "C2",
+              "C3"
+            ]
+          },
+          {
+            "id": "T-UIL-03",
+            "name": "Application Session Hijacking",
+            "description": "An attacker intercepts or steals a valid application session token to issue requests under an authenticated user's identity.",
+            "controls": [
+              "C4",
+              "C5",
+              "C9"
+            ]
+          },
+          {
+            "id": "T-UIL-04",
+            "name": "Denial of Service",
+            "description": "An attacker floods the application to exhaust capacity, degrade quality, or trigger runaway agent execution chains.",
+            "controls": [
+              "C6",
+              "C7"
+            ]
+          },
+          {
+            "id": "T-UIL-05",
+            "name": "Insecure Output Handling",
+            "description": "An agent returns output containing executable content (XSS/script injection) or sensitive data to the UI without sanitisation.",
+            "controls": [
+              "C19",
+              "C23"
+            ]
+          },
+          {
+            "id": "T-UIL-06",
+            "name": "HITL Workflow Manipulation",
+            "description": "An attacker manipulates the human-in-the-loop approval interface so a reviewer unknowingly approves a harmful or policy-violating action.",
+            "controls": [
+              "C3",
+              "C9",
+              "C26"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "agent-registry",
+      "node-type": "service",
+      "name": "Agent Registry",
+      "description": "Catalog of available agents, capabilities, and metadata; supports versioning and lifecycle management.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-AGL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-AGL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C10": {
+          "description": "Implement automated configuration scanning to detect unauthorised changes",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C10",
+                "mitigates": [
+                  "T-AGL-01"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AGL-01",
+            "name": "Agent Registry Poisoning",
+            "description": "An attacker gains write access to the Agent Registry and inserts a malicious agent entry so the gateway routes to an attacker-controlled agent.",
+            "controls": [
+              "C8",
+              "C9",
+              "C10"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "agent-gateway",
+      "node-type": "ai:api-gateway",
+      "name": "Gateway",
+      "description": "Routes requests from the application to the appropriate agent; validates requests and applies routing rules.",
+      "controls": {
+        "C11": {
+          "description": "Use platform-native network policies (Kubernetes network policies, security groups) to enforce micro-segmentation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C11",
+                "mitigates": [
+                  "T-AGL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C12": {
+          "description": "Enforce mutual TLS (mTLS) for all connections using strong, verifiable workload identities (SPIFFE SVIDs)",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C12",
+                "mitigates": [
+                  "T-AGL-02",
+                  "T-AGL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C36": {
+          "description": "Require signed Agent Card verification for all agent-to-agent calls; reject connections from agents presenting unverifiable, expired, or revoked identities; use a short-lived credential rotation policy",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C36",
+                "mitigates": [
+                  "T-AGL-04"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AGL-02",
+            "name": "Gateway Bypass",
+            "description": "An attacker finds a direct network path to an agent, bypassing the gateway and its authentication, authorisation, and policy enforcement.",
+            "controls": [
+              "C11",
+              "C12"
+            ]
+          },
+          {
+            "id": "T-AGL-04",
+            "name": "Agent Identity Spoofing at Gateway",
+            "description": "An attacker presents a forged or stolen agent identity to the gateway to inherit a legitimate agent's permissions or trust level.",
+            "controls": [
+              "C12",
+              "C36"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "agent-gateway-guardrails",
+      "node-type": "ai:guardrail",
+      "name": "Guardrails and Policies",
+      "description": "Zero-trust authN/authZ, input validation, content filtering, access control, rate limits, and policy enforcement.",
+      "controls": {
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-AGL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C13": {
+          "description": "Manage and version-control all security policies (authorisation, content, behaviour) as code in a version control system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C13",
+                "mitigates": [
+                  "T-AGL-03"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AGL-03",
+            "name": "Guardrail and Policy Evasion",
+            "description": "An attacker crafts syntactically valid requests designed to evade guardrail policy rules while carrying malicious or out-of-scope instructions.",
+            "controls": [
+              "C5",
+              "C13"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "agent-collaboration-patterns",
+      "node-type": "system",
+      "name": "Agent Collaboration Patterns",
+      "description": "High-level strategies for how agents work together to decompose and execute tasks.",
+      "controls": {
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-AL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-AL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C16": {
+          "description": "Ensure child agents are created with a scoped, delegated workload identity and a subset of the parent agent's permissions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C16",
+                "mitigates": [
+                  "T-AL-04"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-04",
+            "name": "Agent Collusion",
+            "description": "Two or more compromised agents coordinate to circumvent a control neither could bypass alone (e.g. bypassing a four-eyes control).",
+            "controls": [
+              "C5",
+              "C9",
+              "C16"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "unified-agent-runtime",
+      "node-type": "system",
+      "name": "Unified Agent Runtime",
+      "description": "Secure, sandboxed environment where all agentic reasoning and execution occurs.",
+      "controls": {
+        "C1": {
+          "description": "Implement input validation libraries and custom rules at the application layer",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C1",
+                "mitigates": [
+                  "T-AL-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C2": {
+          "description": "Use a specialised AI security tool, integrated as part of a gateway (Agent, MCP, or LLM) or as a standalone firewall, to inspect, validate, and sanitise prompts and responses for content-based threats",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C2",
+                "mitigates": [
+                  "T-AL-06",
+                  "T-AL-07"
+                ]
+              }
+            }
+          ]
+        },
+        "C3": {
+          "description": "Design workflows to require human approval for high-risk actions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C3",
+                "mitigates": [
+                  "T-AL-08"
+                ]
+              }
+            }
+          ]
+        },
+        "C14": {
+          "description": "Use sandboxing or containerisation technologies to isolate agent processes and tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C14",
+                "mitigates": [
+                  "T-AL-05",
+                  "T-AL-06",
+                  "T-AL-07"
+                ]
+              }
+            }
+          ]
+        },
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-AL-05",
+                  "T-AL-08",
+                  "T-AL-09"
+                ]
+              }
+            }
+          ]
+        },
+        "C16": {
+          "description": "Ensure child agents are created with a scoped, delegated workload identity and a subset of the parent agent's permissions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C16",
+                "mitigates": [
+                  "T-AL-07"
+                ]
+              }
+            }
+          ]
+        },
+        "C22": {
+          "description": "Implement resource quotas and limits (CPU, memory, execution time) within the agent runtime environment",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C22",
+                "mitigates": [
+                  "T-AL-09"
+                ]
+              }
+            }
+          ]
+        },
+        "C26": {
+          "description": "Enforce strict, non-bypassable workflows for tasks that require human supervision",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C26",
+                "mitigates": [
+                  "T-AL-08"
+                ]
+              }
+            }
+          ]
+        },
+        "C33": {
+          "description": "Apply RAG-specific validation; validate and sanitise retrieved documents before injection into the agent context window and monitor retrieval patterns for anomalous query distributions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C33",
+                "mitigates": [
+                  "T-AL-06"
+                ]
+              }
+            }
+          ]
+        },
+        "C36": {
+          "description": "Require signed Agent Card verification for all agent-to-agent calls; reject connections from agents presenting unverifiable, expired, or revoked identities; use a short-lived credential rotation policy",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C36",
+                "mitigates": [
+                  "T-AL-07"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-05",
+            "name": "Goal Manipulation",
+            "description": "An attacker manipulates an agent's goal via crafted input so it pursues an unintended task while appearing normal.",
+            "controls": [
+              "C1",
+              "C14",
+              "C15"
+            ]
+          },
+          {
+            "id": "T-AL-06",
+            "name": "Indirect Prompt Injection",
+            "description": "An attacker embeds malicious instructions in external data the agent consumes (documents, tool responses, web content) to manipulate reasoning.",
+            "controls": [
+              "C2",
+              "C14",
+              "C33"
+            ]
+          },
+          {
+            "id": "T-AL-07",
+            "name": "Multi-Hop Prompt Injection",
+            "description": "A successful injection in a sub-agent propagates malicious instructions upstream to the supervisor and across the agent graph.",
+            "controls": [
+              "C2",
+              "C14",
+              "C16",
+              "C36"
+            ]
+          },
+          {
+            "id": "T-AL-08",
+            "name": "Excessive Agency and Scope Expansion",
+            "description": "An agent expands its own scope or executes an action chain whose cumulative effect was not authorised.",
+            "controls": [
+              "C3",
+              "C15",
+              "C26"
+            ]
+          },
+          {
+            "id": "T-AL-09",
+            "name": "Agent Resource Exhaustion",
+            "description": "An attacker tricks an agent into a computationally expensive or infinitely recursive task that exhausts CPU, memory, or time quotas.",
+            "controls": [
+              "C15",
+              "C22"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "supervisor-worker",
+      "node-type": "ai:orchestrator",
+      "name": "Supervisor / Worker",
+      "description": "A supervisor agent decomposes a complex task and orchestrates a team of specialized worker agents.",
+      "controls": {
+        "C11": {
+          "description": "Use platform-native network policies (Kubernetes network policies, security groups) to enforce micro-segmentation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C11",
+                "mitigates": [
+                  "T-AL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C14": {
+          "description": "Use sandboxing or containerisation technologies to isolate agent processes and tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C14",
+                "mitigates": [
+                  "T-AL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C16": {
+          "description": "Ensure child agents are created with a scoped, delegated workload identity and a subset of the parent agent's permissions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C16",
+                "mitigates": [
+                  "T-AL-01"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-01",
+            "name": "Supervisor Agent Compromise",
+            "description": "An attacker controls the supervisor agent and issues arbitrary instructions to all subordinate worker agents.",
+            "controls": [
+              "C11",
+              "C14",
+              "C16"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "skills-based-routing",
+      "node-type": "ai:orchestrator",
+      "name": "Skills-Based Routing",
+      "description": "Routes a request based on a required skill to an available agent that possesses that skill.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-AL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C10": {
+          "description": "Implement automated configuration scanning to detect unauthorised changes",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C10",
+                "mitigates": [
+                  "T-AL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-AL-02"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-02",
+            "name": "Goal Manipulation via Skill Routing",
+            "description": "An attacker exploits Skills-Based Routing to dispatch a sensitive task to a low-trust or compromised agent.",
+            "controls": [
+              "C8",
+              "C10",
+              "C15"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "agent-as-a-tool",
+      "node-type": "ai:agent",
+      "name": "Agent as a Tool",
+      "description": "One agent invokes another agent as if it were a tool, enabling handoff to specialists.",
+      "controls": {
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-AL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C16": {
+          "description": "Ensure child agents are created with a scoped, delegated workload identity and a subset of the parent agent's permissions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C16",
+                "mitigates": [
+                  "T-AL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C36": {
+          "description": "Require signed Agent Card verification for all agent-to-agent calls; reject connections from agents presenting unverifiable, expired, or revoked identities; use a short-lived credential rotation policy",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C36",
+                "mitigates": [
+                  "T-AL-03"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-03",
+            "name": "Agent-as-a-Tool Abuse",
+            "description": "An attacker causes a high-privilege agent to invoke a compromised agent as a sub-tool, granting it the caller's permissions and context.",
+            "controls": [
+              "C9",
+              "C16",
+              "C36"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "state-management",
+      "node-type": "service",
+      "name": "State Management",
+      "description": "Manages the complete state of a task to enable pause, resume, and handoff.",
+      "controls": {
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-AL-13"
+                ]
+              }
+            }
+          ]
+        },
+        "C12": {
+          "description": "Enforce mutual TLS (mTLS) for all connections using strong, verifiable workload identities (SPIFFE SVIDs)",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C12",
+                "mitigates": [
+                  "T-AL-13"
+                ]
+              }
+            }
+          ]
+        },
+        "C20": {
+          "description": "Ensure logs contain full cryptographic workload identity and rich contextual details for forensic investigation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C20",
+                "mitigates": [
+                  "T-AL-13"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-13",
+            "name": "State Hijacking via Pause and Resume",
+            "description": "An attacker manipulates serialised task state during pause/handoff so the resumed agent runs with attacker-controlled goal, memory, or credentials.",
+            "controls": [
+              "C9",
+              "C12",
+              "C20"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "secure-execution",
+      "node-type": "service",
+      "name": "Secure Execution",
+      "description": "Intercepts and validates all tool-call requests; handles execution and credentials securely within the sandbox.",
+      "controls": {
+        "C14": {
+          "description": "Use sandboxing or containerisation technologies to isolate agent processes and tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C14",
+                "mitigates": [
+                  "T-AL-10"
+                ]
+              }
+            }
+          ]
+        },
+        "C28": {
+          "description": "Implement network egress filtering to restrict agent outbound connections to an approved destination allowlist",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C28",
+                "mitigates": [
+                  "T-AL-10"
+                ]
+              }
+            }
+          ]
+        },
+        "C29": {
+          "description": "Use a dedicated secrets management platform for all credentials, API keys, and certificates; never inject secrets as environment variables accessible to the agent process",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C29",
+                "mitigates": [
+                  "T-AL-10"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-10",
+            "name": "Secrets Exfiltration from Agent Runtime",
+            "description": "A compromised agent reads environment variables, mounted secrets, or service tokens in its execution environment and exfiltrates them.",
+            "controls": [
+              "C14",
+              "C28",
+              "C29"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "collaboration-handoff",
+      "node-type": "service",
+      "name": "Collaboration / Handoff",
+      "description": "Stateful collaboration between agents through shared access to memory and state.",
+      "controls": {
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-AL-14"
+                ]
+              }
+            }
+          ]
+        },
+        "C11": {
+          "description": "Use platform-native network policies (Kubernetes network policies, security groups) to enforce micro-segmentation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C11",
+                "mitigates": [
+                  "T-AL-14"
+                ]
+              }
+            }
+          ]
+        },
+        "C14": {
+          "description": "Use sandboxing or containerisation technologies to isolate agent processes and tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C14",
+                "mitigates": [
+                  "T-AL-14"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-14",
+            "name": "Inter-Agent Compromise via Shared State",
+            "description": "A compromised agent attacks or exfiltrates data from peer agents via shared memory, state, or handoff channels.",
+            "controls": [
+              "C5",
+              "C11",
+              "C14"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "adaptive-learning",
+      "node-type": "service",
+      "name": "Adaptive Learning",
+      "description": "Generates learning signals from execution outcomes to refine prompts, configurations, and tool selection.",
+      "controls": {
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-AL-11"
+                ]
+              }
+            }
+          ]
+        },
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-AL-11"
+                ]
+              }
+            }
+          ]
+        },
+        "C27": {
+          "description": "Implement a multi-source feedback engine that aggregates and weights signals from diverse sources to generate a trusted score for agent interactions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C27",
+                "mitigates": [
+                  "T-AL-11"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-11",
+            "name": "Adaptive Learning Poisoning",
+            "description": "An attacker manipulates execution outcomes or feedback signals so Adaptive Learning learns degraded prompts, configs, or tool strategies.",
+            "controls": [
+              "C9",
+              "C15",
+              "C27"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "workspace-file-system",
+      "node-type": "data-asset",
+      "name": "Workspace File System",
+      "description": "Sandboxed, persistent file system agents use to read/write large artifacts.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-AL-12"
+                ]
+              }
+            }
+          ]
+        },
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-AL-12"
+                ]
+              }
+            }
+          ]
+        },
+        "C14": {
+          "description": "Use sandboxing or containerisation technologies to isolate agent processes and tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C14",
+                "mitigates": [
+                  "T-AL-12"
+                ]
+              }
+            }
+          ]
+        },
+        "C19": {
+          "description": "Integrate with Data Loss Prevention (DLP) solutions to scan agent outputs for sensitive data",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C19",
+                "mitigates": [
+                  "T-AL-12"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-12",
+            "name": "Workspace File System Abuse",
+            "description": "A compromised agent writes malicious content to the shared Workspace File System that another agent or user later reads and acts on.",
+            "controls": [
+              "C8",
+              "C9",
+              "C14",
+              "C19"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "tools-layer",
+      "node-type": "system",
+      "name": "Tools Layer",
+      "description": "Collection of built-in, trusted tools providing fundamental capabilities."
+    },
+    {
+      "unique-id": "short-term-memory",
+      "node-type": "ai:memory",
+      "name": "Short-Term Memory",
+      "description": "Manages the immediate context for the agent's reasoning loop."
+    },
+    {
+      "unique-id": "long-term-memory",
+      "node-type": "ai:memory",
+      "name": "Long-Term Memory",
+      "description": "Maintains durable information across sessions for personalization and continuity."
+    },
+    {
+      "unique-id": "mcp-client",
+      "node-type": "ai:tool",
+      "name": "MCP Client",
+      "description": "Secure bridge from the runtime to the external MCP layer for specialized, high-risk, or enterprise tools.",
+      "controls": {
+        "C28": {
+          "description": "Implement network egress filtering to restrict agent outbound connections to an approved destination allowlist",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C28",
+                "mitigates": [
+                  "T-AL-18"
+                ]
+              }
+            }
+          ]
+        },
+        "C32": {
+          "description": "Enforce data minimisation at the agent runtime layer; pass only the data fields required for each tool call and strip all fields not needed for the immediate task before dispatch",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C32",
+                "mitigates": [
+                  "T-AL-18"
+                ]
+              }
+            }
+          ]
+        },
+        "C35": {
+          "description": "Enforce strict parameter schema validation for all MCP tool calls; reject any call where parameters contain data from domains not authorised for that tool",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C35",
+                "mitigates": [
+                  "T-AL-18"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-18",
+            "name": "MCP Client Misuse",
+            "description": "A compromised agent exploits the MCP Client to invoke unauthorised MCP servers or pass sensitive runtime data to an attacker endpoint.",
+            "controls": [
+              "C28",
+              "C32",
+              "C35"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "shell-tool",
+      "node-type": "ai:tool",
+      "name": "Shell Tool",
+      "description": "Sandboxed shell environment for executing basic commands.",
+      "controls": {
+        "C1": {
+          "description": "Implement input validation libraries and custom rules at the application layer",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C1",
+                "mitigates": [
+                  "T-AL-15"
+                ]
+              }
+            }
+          ]
+        },
+        "C14": {
+          "description": "Use sandboxing or containerisation technologies to isolate agent processes and tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C14",
+                "mitigates": [
+                  "T-AL-15"
+                ]
+              }
+            }
+          ]
+        },
+        "C17": {
+          "description": "Grant just-in-time, task-scoped permissions for tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C17",
+                "mitigates": [
+                  "T-AL-15"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-15",
+            "name": "Shell Tool Abuse",
+            "description": "A compromised agent invokes the Shell Tool with attacker-controlled arguments to execute arbitrary commands or escalate privileges.",
+            "controls": [
+              "C1",
+              "C14",
+              "C17"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "io-tool",
+      "node-type": "ai:tool",
+      "name": "I/O Tool",
+      "description": "Reads from and writes to the workspace file system.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-AL-16"
+                ]
+              }
+            }
+          ]
+        },
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-AL-16"
+                ]
+              }
+            }
+          ]
+        },
+        "C14": {
+          "description": "Use sandboxing or containerisation technologies to isolate agent processes and tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C14",
+                "mitigates": [
+                  "T-AL-16"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-16",
+            "name": "I/O Tool Abuse",
+            "description": "A compromised agent uses the I/O Tool to read outside its workspace, exfiltrate data, or write content that poisons subsequent reads.",
+            "controls": [
+              "C8",
+              "C9",
+              "C14"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "web-search-tool",
+      "node-type": "ai:tool",
+      "name": "Web Search Tool",
+      "description": "Built-in tool for performing web searches.",
+      "controls": {
+        "C2": {
+          "description": "Use a specialised AI security tool, integrated as part of a gateway (Agent, MCP, or LLM) or as a standalone firewall, to inspect, validate, and sanitise prompts and responses for content-based threats",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C2",
+                "mitigates": [
+                  "T-AL-17"
+                ]
+              }
+            }
+          ]
+        },
+        "C28": {
+          "description": "Implement network egress filtering to restrict agent outbound connections to an approved destination allowlist",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C28",
+                "mitigates": [
+                  "T-AL-17"
+                ]
+              }
+            }
+          ]
+        },
+        "C33": {
+          "description": "Apply RAG-specific validation; validate and sanitise retrieved documents before injection into the agent context window and monitor retrieval patterns for anomalous query distributions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C33",
+                "mitigates": [
+                  "T-AL-17"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-17",
+            "name": "Web Search Tool Manipulation",
+            "description": "An attacker places adversarial content at URLs the Web Search Tool returns so the agent retrieves and acts on attacker-controlled information.",
+            "controls": [
+              "C2",
+              "C28",
+              "C33"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "in-session-context-manager",
+      "node-type": "service",
+      "name": "In-Session Context Manager",
+      "description": "Employs trimming and summarization to manage context length, cost, and latency.",
+      "controls": {
+        "C2": {
+          "description": "Use a specialised AI security tool, integrated as part of a gateway (Agent, MCP, or LLM) or as a standalone firewall, to inspect, validate, and sanitise prompts and responses for content-based threats",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C2",
+                "mitigates": [
+                  "T-AL-19"
+                ]
+              }
+            }
+          ]
+        },
+        "C14": {
+          "description": "Use sandboxing or containerisation technologies to isolate agent processes and tool execution",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C14",
+                "mitigates": [
+                  "T-AL-19"
+                ]
+              }
+            }
+          ]
+        },
+        "C33": {
+          "description": "Apply RAG-specific validation; validate and sanitise retrieved documents before injection into the agent context window and monitor retrieval patterns for anomalous query distributions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C33",
+                "mitigates": [
+                  "T-AL-19"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-19",
+            "name": "Context Window Poisoning",
+            "description": "An attacker injects adversarial content into the in-session context window so summarisation/trimming propagates it into active reasoning.",
+            "controls": [
+              "C2",
+              "C14",
+              "C33"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "session-summaries",
+      "node-type": "data-asset",
+      "name": "Session Summaries",
+      "description": "Stores summaries of past interactions for future reference.",
+      "controls": {
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-AL-20"
+                ]
+              }
+            }
+          ]
+        },
+        "C18": {
+          "description": "Implement automated data validation and sanitisation pipelines for knowledge sources",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C18",
+                "mitigates": [
+                  "T-AL-20"
+                ]
+              }
+            }
+          ]
+        },
+        "C34": {
+          "description": "Enforce strict cross-session isolation in long-term memory; cryptographically bind all memory entries to the originating user and session identity",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C34",
+                "mitigates": [
+                  "T-AL-20"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-20",
+            "name": "Long-Term Memory Poisoning",
+            "description": "An attacker injects crafted content into session summaries that persists and biases future agent behaviour.",
+            "controls": [
+              "C9",
+              "C18",
+              "C34"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "user-task-personalization",
+      "node-type": "data-asset",
+      "name": "User/Task Personalization",
+      "description": "Retains user preferences and task-specific information to tailor future interactions.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-AL-21"
+                ]
+              }
+            }
+          ]
+        },
+        "C24": {
+          "description": "Encrypt sensitive data, including models, both at rest and in transit",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C24",
+                "mitigates": [
+                  "T-AL-21"
+                ]
+              }
+            }
+          ]
+        },
+        "C34": {
+          "description": "Enforce strict cross-session isolation in long-term memory; cryptographically bind all memory entries to the originating user and session identity",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C34",
+                "mitigates": [
+                  "T-AL-21"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-AL-21",
+            "name": "Cross-Session Memory Leakage",
+            "description": "Information from one user's/session's memory is retrieved and exposed in a different user's subsequent session.",
+            "controls": [
+              "C8",
+              "C24",
+              "C34"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "source-bases",
+      "node-type": "ai:knowledge-base",
+      "name": "Source Bases",
+      "description": "Internal/external repositories of structured, unstructured, or graph-based authoritative information.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-KL-01",
+                  "T-KL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C18": {
+          "description": "Implement automated data validation and sanitisation pipelines for knowledge sources",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C18",
+                "mitigates": [
+                  "T-KL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C19": {
+          "description": "Integrate with Data Loss Prevention (DLP) solutions to scan agent outputs for sensitive data",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C19",
+                "mitigates": [
+                  "T-KL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C24": {
+          "description": "Encrypt sensitive data, including models, both at rest and in transit",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C24",
+                "mitigates": [
+                  "T-KL-03"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-KL-01",
+            "name": "Data Poisoning",
+            "description": "An attacker injects false or malicious information into source bases or vector DBs so agents ground reasoning in attacker-controlled content.",
+            "controls": [
+              "C8",
+              "C18"
+            ]
+          },
+          {
+            "id": "T-KL-03",
+            "name": "Data Leakage from Knowledge Layer",
+            "description": "An agent retrieves and exposes knowledge-layer data to an unauthorised caller via over-broad or manipulated retrieval.",
+            "controls": [
+              "C8",
+              "C19",
+              "C24"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "vector-dbs",
+      "node-type": "ai:vector-store",
+      "name": "Vector DBs",
+      "description": "Vector-based retrieval for semantic search and grounding over large text corpora.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-KL-03",
+                  "T-KL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-KL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C19": {
+          "description": "Integrate with Data Loss Prevention (DLP) solutions to scan agent outputs for sensitive data",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C19",
+                "mitigates": [
+                  "T-KL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C24": {
+          "description": "Encrypt sensitive data, including models, both at rest and in transit",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C24",
+                "mitigates": [
+                  "T-KL-03",
+                  "T-KL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C33": {
+          "description": "Apply RAG-specific validation; validate and sanitise retrieved documents before injection into the agent context window and monitor retrieval patterns for anomalous query distributions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C33",
+                "mitigates": [
+                  "T-KL-02"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-KL-02",
+            "name": "RAG Retrieval Manipulation",
+            "description": "An attacker crafts content that scores highly in similarity search so it is consistently retrieved ahead of authoritative content.",
+            "controls": [
+              "C15",
+              "C33"
+            ]
+          },
+          {
+            "id": "T-KL-03",
+            "name": "Data Leakage from Knowledge Layer",
+            "description": "An agent retrieves and exposes knowledge-layer data to an unauthorised caller via over-broad or manipulated retrieval.",
+            "controls": [
+              "C8",
+              "C19",
+              "C24"
+            ]
+          },
+          {
+            "id": "T-KL-04",
+            "name": "Embedding Inversion Attack",
+            "description": "An attacker with access to the raw vector DB reconstructs original source documents from stored embeddings.",
+            "controls": [
+              "C8",
+              "C24"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "model-registry",
+      "node-type": "service",
+      "name": "Model Registry",
+      "description": "Catalog of approved models with metadata, versions, configuration, and usage constraints.",
+      "controls": {
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-LLM-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-LLM-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C10": {
+          "description": "Implement automated configuration scanning to detect unauthorised changes",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C10",
+                "mitigates": [
+                  "T-LLM-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C24": {
+          "description": "Encrypt sensitive data, including models, both at rest and in transit",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C24",
+                "mitigates": [
+                  "T-LLM-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C25": {
+          "description": "Implement a strict vetting and scanning process for all new models and components before they are registered in the platform",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C25",
+                "mitigates": [
+                  "T-LLM-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C30": {
+          "description": "Enforce cryptographic signing and integrity verification for all registered models; validate signatures at load time and reject any model whose signature cannot be verified",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C30",
+                "mitigates": [
+                  "T-LLM-01"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-LLM-01",
+            "name": "Malicious Model Registration",
+            "description": "An attacker registers a backdoored or adversarially fine-tuned model that misbehaves on specific trigger sequences.",
+            "controls": [
+              "C10",
+              "C25",
+              "C30"
+            ]
+          },
+          {
+            "id": "T-LLM-02",
+            "name": "Model Theft",
+            "description": "An attacker exfiltrates proprietary model weights from the Model Registry or inference infrastructure.",
+            "controls": [
+              "C5",
+              "C8",
+              "C24"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "llm-gateway",
+      "node-type": "ai:api-gateway",
+      "name": "LLM Gateway",
+      "description": "Routes inference requests from the agent layer to the appropriate approved model instance.",
+      "controls": {
+        "C2": {
+          "description": "Use a specialised AI security tool, integrated as part of a gateway (Agent, MCP, or LLM) or as a standalone firewall, to inspect, validate, and sanitise prompts and responses for content-based threats",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C2",
+                "mitigates": [
+                  "T-LLM-03",
+                  "T-LLM-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C13": {
+          "description": "Manage and version-control all security policies (authorisation, content, behaviour) as code in a version control system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C13",
+                "mitigates": [
+                  "T-LLM-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C29": {
+          "description": "Use a dedicated secrets management platform for all credentials, API keys, and certificates; never inject secrets as environment variables accessible to the agent process",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C29",
+                "mitigates": [
+                  "T-LLM-04"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-LLM-03",
+            "name": "Prompt Injection at LLM Inference",
+            "description": "An attacker crafts a prompt that overrides system instructions or guardrails at the inference layer.",
+            "controls": [
+              "C2"
+            ]
+          },
+          {
+            "id": "T-LLM-04",
+            "name": "System Prompt Leakage",
+            "description": "An attacker manipulates the LLM into revealing its system prompt, exposing workflow logic or controls.",
+            "controls": [
+              "C2",
+              "C13",
+              "C29"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "llm-guardrails",
+      "node-type": "ai:guardrail",
+      "name": "Guardrails and Policies (LLM)",
+      "description": "Zero-trust authN/authZ, prompt-injection input validation, output filtering, access control, rate and cost limits.",
+      "controls": {
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-LLM-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C13": {
+          "description": "Manage and version-control all security policies (authorisation, content, behaviour) as code in a version control system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C13",
+                "mitigates": [
+                  "T-LLM-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C21": {
+          "description": "Implement automated response playbooks (SOAR) for high-confidence alerts",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C21",
+                "mitigates": [
+                  "T-LLM-05"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-LLM-05",
+            "name": "LLM Gateway Guardrail Bypass",
+            "description": "An attacker bypasses the LLM Gateway's guardrails so it forwards harmful content or unauthorised requests to the model.",
+            "controls": [
+              "C5",
+              "C13",
+              "C21"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "llm-zoo",
+      "node-type": "ai:llm",
+      "name": "LLM Zoo",
+      "description": "Pool of approved foundation/inference models the gateway routes to."
+    },
+    {
+      "unique-id": "mcp-server-registry",
+      "node-type": "service",
+      "name": "MCP Server Registry",
+      "description": "Catalog of approved MCP servers with capabilities, configuration, and usage constraints.",
+      "controls": {
+        "C8": {
+          "description": "Use a Policy-as-Code engine to enforce Attribute-Based Access Control (ABAC) policies for write access",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C8",
+                "mitigates": [
+                  "T-MCP-01",
+                  "T-MCP-04",
+                  "T-MCP-06"
+                ]
+              }
+            }
+          ]
+        },
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-MCP-01",
+                  "T-MCP-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C10": {
+          "description": "Implement automated configuration scanning to detect unauthorised changes",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C10",
+                "mitigates": [
+                  "T-MCP-01",
+                  "T-MCP-04",
+                  "T-MCP-06"
+                ]
+              }
+            }
+          ]
+        },
+        "C13": {
+          "description": "Manage and version-control all security policies (authorisation, content, behaviour) as code in a version control system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C13",
+                "mitigates": [
+                  "T-MCP-06"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-MCP-01",
+            "name": "MCP Registry Poisoning",
+            "description": "An attacker gains write access to the MCP Server Registry and inserts a malicious server entry.",
+            "controls": [
+              "C8",
+              "C9",
+              "C10"
+            ]
+          },
+          {
+            "id": "T-MCP-04",
+            "name": "Tool Name Shadowing",
+            "description": "An attacker registers a malicious server declaring a tool name identical to a legitimate tool so routing resolves to the malicious server.",
+            "controls": [
+              "C8",
+              "C9",
+              "C10"
+            ]
+          },
+          {
+            "id": "T-MCP-06",
+            "name": "MCP Capability Escalation",
+            "description": "A registered MCP server advertises broader capabilities or data access than approved, leading agents to over-reach.",
+            "controls": [
+              "C8",
+              "C10",
+              "C13"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "mcp-gateway",
+      "node-type": "ai:api-gateway",
+      "name": "MCP Gateway",
+      "description": "Routes MCP connection requests from the agent layer to the appropriate approved server instance.",
+      "controls": {
+        "C11": {
+          "description": "Use platform-native network policies (Kubernetes network policies, security groups) to enforce micro-segmentation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C11",
+                "mitigates": [
+                  "T-MCP-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C12": {
+          "description": "Enforce mutual TLS (mTLS) for all connections using strong, verifiable workload identities (SPIFFE SVIDs)",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C12",
+                "mitigates": [
+                  "T-MCP-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C19": {
+          "description": "Integrate with Data Loss Prevention (DLP) solutions to scan agent outputs for sensitive data",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C19",
+                "mitigates": [
+                  "T-MCP-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C28": {
+          "description": "Implement network egress filtering to restrict agent outbound connections to an approved destination allowlist",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C28",
+                "mitigates": [
+                  "T-MCP-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C32": {
+          "description": "Enforce data minimisation at the agent runtime layer; pass only the data fields required for each tool call and strip all fields not needed for the immediate task before dispatch",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C32",
+                "mitigates": [
+                  "T-MCP-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C35": {
+          "description": "Enforce strict parameter schema validation for all MCP tool calls; reject any call where parameters contain data from domains not authorised for that tool",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C35",
+                "mitigates": [
+                  "T-MCP-05"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-MCP-03",
+            "name": "MCP Gateway Bypass",
+            "description": "An attacker finds a direct network path to an MCP server bypassing the MCP Gateway and its controls.",
+            "controls": [
+              "C11",
+              "C12"
+            ]
+          },
+          {
+            "id": "T-MCP-05",
+            "name": "Data Exfiltration via Tool Parameters",
+            "description": "An agent is manipulated into passing sensitive data as tool-call parameters to an unapproved third-party server.",
+            "controls": [
+              "C19",
+              "C28",
+              "C32",
+              "C35"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "mcp-guardrails",
+      "node-type": "ai:guardrail",
+      "name": "Guardrails and Policies (MCP)",
+      "description": "Zero-trust authN/authZ, tool-access policy, rate limits, and tool-call parameter validation."
+    },
+    {
+      "unique-id": "mcp-zoo",
+      "node-type": "ai:mcp-server",
+      "name": "MCP Zoo",
+      "description": "Pool of approved MCP servers exposing specialized and enterprise-specific tools.",
+      "controls": {
+        "C10": {
+          "description": "Implement automated configuration scanning to detect unauthorised changes",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C10",
+                "mitigates": [
+                  "T-MCP-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C11": {
+          "description": "Use platform-native network policies (Kubernetes network policies, security groups) to enforce micro-segmentation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C11",
+                "mitigates": [
+                  "T-MCP-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C12": {
+          "description": "Enforce mutual TLS (mTLS) for all connections using strong, verifiable workload identities (SPIFFE SVIDs)",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C12",
+                "mitigates": [
+                  "T-MCP-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C24": {
+          "description": "Encrypt sensitive data, including models, both at rest and in transit",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C24",
+                "mitigates": [
+                  "T-MCP-02"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-MCP-02",
+            "name": "Compromised MCP Server",
+            "description": "An attacker compromises a legitimate MCP server to intercept calls, manipulate responses, or pivot to enterprise systems.",
+            "controls": [
+              "C10",
+              "C11",
+              "C12",
+              "C24"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "feedback-engine",
+      "node-type": "ai:eval-monitor",
+      "name": "Feedback Engine",
+      "description": "Collects and aggregates correctness, preference, and quality feedback signals from users and systems.",
+      "controls": {
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-EVL-01"
+                ]
+              }
+            }
+          ]
+        },
+        "C27": {
+          "description": "Implement a multi-source feedback engine that aggregates and weights signals from diverse sources to generate a trusted score for agent interactions",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C27",
+                "mitigates": [
+                  "T-EVL-01"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-EVL-01",
+            "name": "Feedback Manipulation",
+            "description": "An attacker provides systematically false feedback so the system learns incorrect behaviours or lowers safety thresholds.",
+            "controls": [
+              "C5",
+              "C27"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "human-supervision",
+      "node-type": "ai:human-in-the-loop",
+      "name": "Human Supervision",
+      "description": "Human review/approve/correct/override of agent outputs; human-in-the-loop and human-over-the-loop workflows.",
+      "controls": {
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-EVL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C26": {
+          "description": "Enforce strict, non-bypassable workflows for tasks that require human supervision",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C26",
+                "mitigates": [
+                  "T-EVL-02"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-EVL-02",
+            "name": "Bypassing Human Supervision",
+            "description": "An attacker finds a path that lets actions requiring human approval execute without the Human Supervision workflow.",
+            "controls": [
+              "C9",
+              "C26"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "runtime-protection",
+      "node-type": "ai:guardrail",
+      "name": "Runtime Protection",
+      "description": "Monitors actions and outputs during execution; blocks disallowed actions and triggers escalation.",
+      "controls": {
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-EVL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-EVL-03"
+                ]
+              }
+            }
+          ]
+        },
+        "C21": {
+          "description": "Implement automated response playbooks (SOAR) for high-confidence alerts",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C21",
+                "mitigates": [
+                  "T-EVL-03"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-EVL-03",
+            "name": "Runtime Protection Evasion",
+            "description": "An attacker crafts action sequences that individually pass Runtime Protection but in aggregate represent a policy violation.",
+            "controls": [
+              "C5",
+              "C15",
+              "C21"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "logs",
+      "node-type": "ai:observability",
+      "name": "Logs",
+      "description": "Structured/unstructured logs from all layers for debugging, audit, and historical analysis.",
+      "controls": {
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-OBL-01",
+                  "T-OBL-02"
+                ]
+              }
+            }
+          ]
+        },
+        "C20": {
+          "description": "Ensure logs contain full cryptographic workload identity and rich contextual details for forensic investigation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C20",
+                "mitigates": [
+                  "T-OBL-01",
+                  "T-OBL-02"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-OBL-01",
+            "name": "Log Tampering",
+            "description": "An attacker modifies or deletes existing log entries to conceal activity and obstruct forensic investigation.",
+            "controls": [
+              "C9",
+              "C20"
+            ]
+          },
+          {
+            "id": "T-OBL-02",
+            "name": "Log Injection",
+            "description": "A compromised agent crafts log entries with false attribution or content designed to mislead correlation and investigators.",
+            "controls": [
+              "C9",
+              "C20"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "traces",
+      "node-type": "ai:observability",
+      "name": "Traces",
+      "description": "Distributed tracing across the request lifecycle for root-cause and performance analysis.",
+      "controls": {
+        "C9": {
+          "description": "Log all critical changes to a centralised, write-once, read-many (WORM) system",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C9",
+                "mitigates": [
+                  "T-OBL-04"
+                ]
+              }
+            }
+          ]
+        },
+        "C20": {
+          "description": "Ensure logs contain full cryptographic workload identity and rich contextual details for forensic investigation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C20",
+                "mitigates": [
+                  "T-OBL-04"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-OBL-04",
+            "name": "Trace Poisoning",
+            "description": "A compromised agent injects fabricated or tampered trace spans so operators reconstruct a false view of the request lifecycle.",
+            "controls": [
+              "C9",
+              "C20"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "metrics",
+      "node-type": "ai:observability",
+      "name": "Metrics",
+      "description": "Latency, throughput, error rates, usage statistics, and resource consumption measurements."
+    },
+    {
+      "unique-id": "events",
+      "node-type": "ai:observability",
+      "name": "Events",
+      "description": "Significant system events: policy violations, model-selection decisions, escalations, evaluation outcomes."
+    },
+    {
+      "unique-id": "anomaly-detection",
+      "node-type": "ai:observability",
+      "name": "Anomaly Detection",
+      "description": "Identifies unusual or unexpected patterns in logs, traces, metrics, or events.",
+      "controls": {
+        "C5": {
+          "description": "Feed user activity and agent logs into a security analytics platform (SIEM) for behavioural analytics and anomaly detection",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C5",
+                "mitigates": [
+                  "T-OBL-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C15": {
+          "description": "Implement runtime monitoring to detect and alert on anomalous agent behaviour or goal deviation",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C15",
+                "mitigates": [
+                  "T-OBL-05"
+                ]
+              }
+            }
+          ]
+        },
+        "C21": {
+          "description": "Implement automated response playbooks (SOAR) for high-confidence alerts",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C21",
+                "mitigates": [
+                  "T-OBL-05"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-OBL-05",
+            "name": "Anomaly Detection Evasion",
+            "description": "An attacker operates just below anomaly thresholds (slow exfiltration, gradual drift) to persist without triggering detection.",
+            "controls": [
+              "C5",
+              "C15",
+              "C21"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "unique-id": "correlation-engine",
+      "node-type": "ai:observability",
+      "name": "Correlation Engine",
+      "description": "Correlates signals across logs, traces, metrics, and events into a unified view of system behavior.",
+      "controls": {
+        "C21": {
+          "description": "Implement automated response playbooks (SOAR) for high-confidence alerts",
+          "requirements": [
+            {
+              "requirement-url": "https://github.com/finos/ai-reference-architecture-library/blob/main/Library/reference_architecture/agentic_ai/multi_agent/tm/tm_ma_ref_arch_apr_2026.md#1-controls-definition",
+              "config": {
+                "control-id": "C21",
+                "mitigates": [
+                  "T-OBL-03"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "metadata": {
+        "threats": [
+          {
+            "id": "T-OBL-03",
+            "name": "Alert Fatigue",
+            "description": "An attacker generates high-volume low-fidelity alerts to desensitise operators so genuine high-severity events are missed.",
+            "controls": [
+              "C21"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "unique-id": "multi-agent-system-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "multi-agent-system",
+          "nodes": [
+            "user-interaction-layer",
+            "agent-gateway-layer",
+            "agent-layer",
+            "knowledge-layer",
+            "llm-layer",
+            "mcp-layer",
+            "evaluation-layer",
+            "observability-layer"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "user-interaction-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "user-interaction-layer",
+          "nodes": [
+            "user",
+            "application"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "agent-gateway-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "agent-gateway-layer",
+          "nodes": [
+            "agent-registry",
+            "agent-gateway",
+            "agent-gateway-guardrails"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "agent-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "agent-layer",
+          "nodes": [
+            "agent-collaboration-patterns",
+            "unified-agent-runtime"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "agent-collaboration-patterns-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "agent-collaboration-patterns",
+          "nodes": [
+            "supervisor-worker",
+            "skills-based-routing",
+            "agent-as-a-tool"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "unified-agent-runtime-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "unified-agent-runtime",
+          "nodes": [
+            "state-management",
+            "secure-execution",
+            "collaboration-handoff",
+            "adaptive-learning",
+            "workspace-file-system",
+            "tools-layer",
+            "short-term-memory",
+            "long-term-memory"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "tools-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "tools-layer",
+          "nodes": [
+            "mcp-client",
+            "shell-tool",
+            "io-tool",
+            "web-search-tool"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "short-term-memory-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "short-term-memory",
+          "nodes": [
+            "in-session-context-manager"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "long-term-memory-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "long-term-memory",
+          "nodes": [
+            "session-summaries",
+            "user-task-personalization"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "knowledge-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "knowledge-layer",
+          "nodes": [
+            "source-bases",
+            "vector-dbs"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "llm-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "llm-layer",
+          "nodes": [
+            "model-registry",
+            "llm-gateway",
+            "llm-guardrails",
+            "llm-zoo"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "mcp-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "mcp-layer",
+          "nodes": [
+            "mcp-server-registry",
+            "mcp-gateway",
+            "mcp-guardrails",
+            "mcp-zoo"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "evaluation-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "evaluation-layer",
+          "nodes": [
+            "feedback-engine",
+            "human-supervision",
+            "runtime-protection"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "observability-layer-contains",
+      "relationship-type": {
+        "composed-of": {
+          "container": "observability-layer",
+          "nodes": [
+            "logs",
+            "traces",
+            "metrics",
+            "events",
+            "anomaly-detection",
+            "correlation-engine"
+          ]
+        }
+      }
+    },
+    {
+      "unique-id": "user-to-app",
+      "relationship-type": {
+        "interacts": {
+          "actor": "user",
+          "nodes": [
+            "application"
+          ]
+        }
+      },
+      "description": "User interacts with the application to express goals and review outputs."
+    },
+    {
+      "unique-id": "app-to-gw",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "application"
+          },
+          "destination": {
+            "node": "agent-gateway"
+          }
+        }
+      },
+      "protocol": "HTTPS",
+      "description": "Application forwards user requests to the agent gateway."
+    },
+    {
+      "unique-id": "gw-to-guard",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-gateway"
+          },
+          "destination": {
+            "node": "agent-gateway-guardrails"
+          }
+        }
+      },
+      "description": "Requests pass through zero-trust guardrails before reaching agents."
+    },
+    {
+      "unique-id": "gw-to-registry",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-gateway"
+          },
+          "destination": {
+            "node": "agent-registry"
+          }
+        }
+      },
+      "description": "Gateway looks up the target agent in the registry."
+    },
+    {
+      "unique-id": "gw-to-runtime",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-gateway"
+          },
+          "destination": {
+            "node": "unified-agent-runtime"
+          }
+        }
+      },
+      "description": "Gateway routes validated requests to the agent runtime."
+    },
+    {
+      "unique-id": "runtime-to-llmgw",
+      "relationship-type": {
+        "interacts": {
+          "actor": "unified-agent-runtime",
+          "nodes": [
+            "llm-gateway"
+          ]
+        }
+      },
+      "description": "Agents submit inference requests via the LLM gateway."
+    },
+    {
+      "unique-id": "llmgw-to-guard",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "llm-gateway"
+          },
+          "destination": {
+            "node": "llm-guardrails"
+          }
+        }
+      },
+      "description": "Inference requests pass through LLM guardrails."
+    },
+    {
+      "unique-id": "llmgw-to-registry",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "llm-gateway"
+          },
+          "destination": {
+            "node": "model-registry"
+          }
+        }
+      },
+      "description": "Gateway resolves approved models via the model registry."
+    },
+    {
+      "unique-id": "llmgw-to-zoo",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "llm-gateway"
+          },
+          "destination": {
+            "node": "llm-zoo"
+          }
+        }
+      },
+      "description": "Gateway routes to the selected approved model instance."
+    },
+    {
+      "unique-id": "mcpc-to-mcpgw",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-client"
+          },
+          "destination": {
+            "node": "mcp-gateway"
+          }
+        }
+      },
+      "description": "MCP client bridges the runtime to the MCP gateway."
+    },
+    {
+      "unique-id": "mcpgw-to-guard",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-gateway"
+          },
+          "destination": {
+            "node": "mcp-guardrails"
+          }
+        }
+      },
+      "description": "MCP requests pass through MCP guardrails."
+    },
+    {
+      "unique-id": "mcpgw-to-registry",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-gateway"
+          },
+          "destination": {
+            "node": "mcp-server-registry"
+          }
+        }
+      },
+      "description": "Gateway resolves approved servers via the MCP server registry."
+    },
+    {
+      "unique-id": "mcpgw-to-zoo",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-gateway"
+          },
+          "destination": {
+            "node": "mcp-zoo"
+          }
+        }
+      },
+      "description": "Gateway routes to the selected approved MCP server."
+    },
+    {
+      "unique-id": "runtime-to-vdb",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "unified-agent-runtime"
+          },
+          "destination": {
+            "node": "vector-dbs"
+          }
+        }
+      },
+      "description": "Agents perform semantic retrieval for grounding."
+    },
+    {
+      "unique-id": "runtime-to-sb",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "unified-agent-runtime"
+          },
+          "destination": {
+            "node": "source-bases"
+          }
+        }
+      },
+      "description": "Agents query authoritative knowledge sources."
+    },
+    {
+      "unique-id": "rp-to-runtime",
+      "relationship-type": {
+        "interacts": {
+          "actor": "runtime-protection",
+          "nodes": [
+            "unified-agent-runtime"
+          ]
+        }
+      },
+      "description": "Runtime protection monitors and can intervene in agent execution."
+    },
+    {
+      "unique-id": "runtime-to-fe",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "unified-agent-runtime"
+          },
+          "destination": {
+            "node": "feedback-engine"
+          }
+        }
+      },
+      "description": "Runtime emits execution outcomes to the feedback engine."
+    },
+    {
+      "unique-id": "fe-to-adl",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "feedback-engine"
+          },
+          "destination": {
+            "node": "adaptive-learning"
+          }
+        }
+      },
+      "description": "Feedback informs adaptive-learning signals."
+    },
+    {
+      "unique-id": "app-to-hs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "application"
+          },
+          "destination": {
+            "node": "human-supervision"
+          }
+        }
+      },
+      "description": "Application surfaces outputs for human review and approval."
+    },
+    {
+      "unique-id": "uil-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "user-interaction-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits interaction logs and session events."
+    },
+    {
+      "unique-id": "agl-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-gateway-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits routing, policy, and access signals."
+    },
+    {
+      "unique-id": "al-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "agent-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits reasoning traces, refinement steps, and execution metrics."
+    },
+    {
+      "unique-id": "kl-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "knowledge-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits retrieval metrics and search traces."
+    },
+    {
+      "unique-id": "llml-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "llm-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits model routing, policy, and usage signals."
+    },
+    {
+      "unique-id": "mcpl-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "mcp-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits tool-access, policy, and routing signals."
+    },
+    {
+      "unique-id": "el-to-obs",
+      "relationship-type": {
+        "connects": {
+          "source": {
+            "node": "evaluation-layer"
+          },
+          "destination": {
+            "node": "observability-layer"
+          }
+        }
+      },
+      "description": "Emits feedback events, supervision outcomes, and runtime-protection signals."
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="hybrid-hierarchical-parallel" name="Hybrid Hierarchical Parallel RA">
+    <mxGraphModel dx="1755" dy="1488" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontSize=26;fontStyle=1;align=left;verticalAlign=middle;" value="Hybrid Hierarchical and Parallel Multi-Agent Reference Architecture" vertex="1">
+          <mxGeometry height="40" width="1000" x="40" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="user_layer" parent="1" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#f6f6f6;strokeColor=#222222;fontSize=20;fontStyle=1;horizontal=1;" value="User Interaction Layer" vertex="1">
+          <mxGeometry height="105" width="1720" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="user_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="User" vertex="1">
+          <mxGeometry height="42" width="220" x="370" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="application" parent="user_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Application" vertex="1">
+          <mxGeometry height="42" width="260" x="680" y="42" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway_layer" parent="1" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#f6f6f6;strokeColor=#222222;fontSize=20;fontStyle=1;horizontal=1;" value="Agent Gateway Layer" vertex="1">
+          <mxGeometry height="120" width="1720" x="40" y="195" as="geometry" />
+        </mxCell>
+        <mxCell id="agent_registry" parent="gateway_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Agent Registry" vertex="1">
+          <mxGeometry height="42" width="270" x="220" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway" parent="gateway_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Gateway" vertex="1">
+          <mxGeometry height="42" width="230" x="620" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gateway_policies" parent="gateway_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7e6;strokeColor=#8a5a00;fontSize=15;" value="Guardrails and Policies" vertex="1">
+          <mxGeometry height="42" width="330" x="990" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="agent_layer" parent="1" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#f6f6f6;strokeColor=#222222;fontSize=20;fontStyle=1;horizontal=1;" value="Agent Layer" vertex="1">
+          <mxGeometry height="470" width="1720" x="40" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="collab_patterns" parent="agent_layer" style="swimlane;html=1;rounded=0;startSize=32;fillColor=#ffffff;strokeColor=#333333;fontSize=17;fontStyle=1;horizontal=1;" value="Agent Collaboration Patterns" vertex="1">
+          <mxGeometry height="370" width="1050" x="35" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="pattern_box" parent="collab_patterns" style="swimlane;html=1;rounded=1;startSize=34;fillColor=#eef6ff;strokeColor=#1f5f99;strokeWidth=2;fontSize=17;fontStyle=1;horizontal=1;" value="Hybrid Hierarchical + Parallel Pattern" vertex="1">
+          <mxGeometry height="285" width="980" x="35" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="supervisor" parent="pattern_box" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dfefff;strokeColor=#1f5f99;strokeWidth=2;fontSize=15;" value="Supervisor / Orchestrator Agent&lt;br&gt;&lt;font style=&quot;font-size: 13px;&quot;&gt;Plan | Delegate | Track State | Reconcile | Escalate&lt;/font&gt;" vertex="1">
+          <mxGeometry height="58" width="440" x="270" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="worker_a" parent="pattern_box" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1f5f99;fontSize=15;" value="Worker Agent A&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Specialist subtask&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="185" x="60" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="worker_b" parent="pattern_box" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1f5f99;fontSize=15;" value="Worker Agent B&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Specialist subtask&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="185" x="285" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="worker_c" parent="pattern_box" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1f5f99;fontSize=15;" value="Worker Agent C&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Specialist subtask&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="185" x="510" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="worker_n" parent="pattern_box" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1f5f99;fontSize=15;" value="Worker Agent N&lt;br&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Specialist subtask&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="185" x="735" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="parallel_label" parent="pattern_box" style="text;html=1;strokeColor=none;fillColor=none;fontSize=13;align=center;" value="parallel delegated subtasks" vertex="1">
+          <mxGeometry height="20" width="310" x="335" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="control_caps" parent="pattern_box" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7e6;strokeColor=#8a5a00;fontSize=15;" value="Control capabilities: Aggregation / Reconciliation | Policy Gate | Human Review / Escalation Routing" vertex="1">
+          <mxGeometry height="34" width="790" x="95" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="runtime" parent="agent_layer" style="swimlane;html=1;rounded=0;startSize=32;fillColor=#ffffff;strokeColor=#333333;fontSize=17;fontStyle=1;horizontal=1;" value="Unified Agent Runtime" vertex="1">
+          <mxGeometry height="370" width="555" x="1130" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="state" parent="runtime" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="State Management" vertex="1">
+          <mxGeometry height="40" width="230" x="30" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="secure" parent="runtime" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Secure Execution" vertex="1">
+          <mxGeometry height="40" width="230" x="290" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="handoff" parent="runtime" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Collaboration / Handoff" vertex="1">
+          <mxGeometry height="40" width="230" x="30" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="adaptive" parent="runtime" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Adaptive Learning" vertex="1">
+          <mxGeometry height="40" width="230" x="290" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="workspace" parent="runtime" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Workspace File System" vertex="1">
+          <mxGeometry height="40" width="230" x="30" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="tools" parent="runtime" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Tools Layer" vertex="1">
+          <mxGeometry height="40" width="230" x="290" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="short_memory" parent="runtime" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Short-Term Memory" vertex="1">
+          <mxGeometry height="40" width="230" x="30" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="long_memory" parent="runtime" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Long-Term Memory" vertex="1">
+          <mxGeometry height="40" width="230" x="290" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="knowledge_layer" parent="1" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#f6f6f6;strokeColor=#222222;fontSize=20;fontStyle=1;horizontal=1;" value="Knowledge Layer" vertex="1">
+          <mxGeometry height="135" width="405" x="40" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="source_bases" parent="knowledge_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=13;" value="Source Bases" vertex="1">
+          <mxGeometry height="42" width="150" x="45" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="vector_dbs" parent="knowledge_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=13;" value="Vector DBs" vertex="1">
+          <mxGeometry height="42" width="140" x="220" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_layer" parent="1" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#f6f6f6;strokeColor=#222222;fontSize=20;fontStyle=1;horizontal=1;" value="LLM Layer" vertex="1">
+          <mxGeometry height="135" width="405" x="475" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="model_registry" parent="llm_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=13;" value="Model Registry" vertex="1">
+          <mxGeometry height="42" width="150" x="40" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="llm_gateway" parent="llm_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=13;" value="LLM Gateway" vertex="1">
+          <mxGeometry height="42" width="150" x="215" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp_layer" parent="1" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#f6f6f6;strokeColor=#222222;fontSize=20;fontStyle=1;horizontal=1;" value="MCP Layer" vertex="1">
+          <mxGeometry height="135" width="405" x="910" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp_registry" parent="mcp_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=13;" value="MCP Registry" vertex="1">
+          <mxGeometry height="42" width="155" x="40" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="mcp_gateway" parent="mcp_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=13;" value="MCP Gateway" vertex="1">
+          <mxGeometry height="42" width="145" x="220" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="evaluation_layer" parent="1" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#f6f6f6;strokeColor=#222222;fontSize=20;fontStyle=1;horizontal=1;" value="Evaluation Layer" vertex="1">
+          <mxGeometry height="135" width="415" x="1345" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="feedback" parent="evaluation_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=13;" value="Feedback" vertex="1">
+          <mxGeometry height="42" width="110" x="40" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="human" parent="evaluation_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7e6;strokeColor=#8a5a00;fontSize=13;" value="Human Supervision" vertex="1">
+          <mxGeometry height="42" width="120" x="170" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="runtime_protection" parent="evaluation_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7e6;strokeColor=#8a5a00;fontSize=13;" value="Runtime Protection" vertex="1">
+          <mxGeometry height="42" width="90" x="305" y="65" as="geometry" />
+        </mxCell>
+        <mxCell id="observability_layer" parent="1" style="swimlane;html=1;rounded=0;startSize=36;fillColor=#f6f6f6;strokeColor=#222222;fontSize=20;fontStyle=1;horizontal=1;" value="Observability Layer" vertex="1">
+          <mxGeometry height="150" width="1720" x="40" y="995" as="geometry" />
+        </mxCell>
+        <mxCell id="logs" parent="observability_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Logs" vertex="1">
+          <mxGeometry height="42" width="150" x="150" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="traces" parent="observability_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Traces" vertex="1">
+          <mxGeometry height="42" width="150" x="370" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="metrics" parent="observability_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Metrics" vertex="1">
+          <mxGeometry height="42" width="150" x="590" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="events" parent="observability_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Events" vertex="1">
+          <mxGeometry height="42" width="150" x="810" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="anomaly" parent="observability_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Anomaly Detection" vertex="1">
+          <mxGeometry height="42" width="220" x="1030" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="correlation" parent="observability_layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;fontSize=15;" value="Correlation Engine" vertex="1">
+          <mxGeometry height="42" width="230" x="1320" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_application_gateway" edge="1" parent="1" source="application" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#333333;" target="gateway" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_gateway_policies" edge="1" parent="1" source="gateway" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=2;strokeColor=#8a5a00;" target="gateway_policies" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_gateway_pattern" edge="1" parent="1" source="gateway" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#333333;" target="pattern_box" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_registry_supervisor" edge="1" parent="1" source="agent_registry" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;fontSize=12;" target="supervisor" value="agent selection / capability lookup">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_supervisor_worker_a" edge="1" parent="1" source="supervisor" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#1f5f99;" target="worker_a" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_supervisor_worker_b" edge="1" parent="1" source="supervisor" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#1f5f99;" target="worker_b" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_supervisor_worker_c" edge="1" parent="1" source="supervisor" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#1f5f99;" target="worker_c" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_supervisor_worker_n" edge="1" parent="1" source="supervisor" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#1f5f99;" target="worker_n" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_worker_a_control" edge="1" parent="1" source="worker_a" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;" target="control_caps" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_worker_b_control" edge="1" parent="1" source="worker_b" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;" target="control_caps" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_worker_c_control" edge="1" parent="1" source="worker_c" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;" target="control_caps" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_worker_n_control" edge="1" parent="1" source="worker_n" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;" target="control_caps" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_pattern_runtime" edge="1" parent="1" source="pattern_box" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;fontSize=12;" target="runtime" value="executed by runtime">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_pattern_knowledge" edge="1" parent="1" source="pattern_box" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;fontSize=12;" target="knowledge_layer" value="grounding / retrieval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_pattern_llm" edge="1" parent="1" source="pattern_box" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;fontSize=12;" target="llm_layer" value="model access">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_pattern_mcp" edge="1" parent="1" source="pattern_box" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;fontSize=12;" target="mcp_layer" value="tool access">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_control_human" edge="1" parent="1" source="control_caps" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=2;strokeColor=#8a5a00;fontSize=12;" target="human" value="escalation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_pattern_observability" edge="1" parent="1" source="pattern_box" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=1.5;strokeColor=#555555;fontSize=12;" target="observability_layer" value="logs / traces / metrics / events">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Veyk8hprn46EQflZ4Sxs-1" edge="1" parent="1" style="endArrow=block;html=1;rounded=0;strokeWidth=2;strokeColor=#333333;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="runtime" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1090" y="570" as="sourcePoint" />
+            <mxPoint x="730" y="508" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
